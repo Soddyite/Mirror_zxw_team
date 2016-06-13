@@ -1,4 +1,4 @@
-package com.example.dllo.mirror.model.activity;
+package com.example.dllo.mirror.controller.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
