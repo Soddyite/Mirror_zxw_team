@@ -47,7 +47,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    protected void initDate() {
+    protected void initData() {
         client = new OkHttpClient();
         sendCodeBtn.setOnClickListener(this);
         createUserBtn.setOnClickListener(this);

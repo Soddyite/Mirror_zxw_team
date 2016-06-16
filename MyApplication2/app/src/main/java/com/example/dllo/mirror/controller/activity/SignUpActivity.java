@@ -70,7 +70,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    protected void initDate() {
+    protected void initData() {
         closeIv.setOnClickListener(this);
 
         creatUserButton.setOnClickListener(this);
