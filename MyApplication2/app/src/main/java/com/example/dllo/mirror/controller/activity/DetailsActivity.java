@@ -3,6 +3,7 @@ package com.example.dllo.mirror.controller.activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.Animation;
@@ -82,7 +83,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
         bottomListViewAdapter = new BottomListViewAdapter(this);
         myDatas = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             myDatas.add(new MyData(R.mipmap.glass));
         }
         bottomListViewAdapter.setMyDatas(myDatas);
@@ -124,14 +125,15 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
                 }
 
+
+//                listViewBottom.setFriction(ViewConfiguration.getScrollFriction());
             }
 
         });
 
-
         topListViewAdapter = new TopListViewAdapter(this);
         myDataTwos = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             myDataTwos.add(new MyDataTwo("SEE CONCEPT", "对方公司规定非活动法啊啊啊啊啊啊啊啊啊啊啊啊啊"));
         }
 
@@ -142,8 +144,9 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
         // 联动方法
         listViewTop.setRelatedListView(listViewBottom);
-
-//        listViewTop.setFriction(ViewConfiguration.getScrollFriction() * 2);
+        // 摩擦力
+        listViewTop.setFriction(ViewConfiguration.getScrollFriction() * 0.9f);
+//        listViewTop.setVelocityScale(0.6f);
     }
 
     @Override
