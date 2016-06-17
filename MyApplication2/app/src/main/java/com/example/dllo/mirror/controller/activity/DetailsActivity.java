@@ -18,13 +18,13 @@ import com.example.dllo.mirror.model.base.MyApplication;
 import com.example.dllo.mirror.model.bean.MyData;
 import com.example.dllo.mirror.model.bean.MyDataTwo;
 import com.example.dllo.mirror.model.utils.ScreenUtils;
-import com.example.dllo.mirror.model.utils.sharesdk.onekeyshare.OnekeyShare;
 import com.example.dllo.mirror.view.RelationListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 /**
  * Created by zouliangyu on 16/6/13.
