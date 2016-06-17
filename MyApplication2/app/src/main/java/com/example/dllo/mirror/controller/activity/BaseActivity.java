@@ -1,9 +1,6 @@
 package com.example.dllo.mirror.controller.activity;
 
-import android.app.Application;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,7 +16,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(getLayout());
         initView();
-        initDate();
+        initData();
     }
 
 
@@ -28,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initView();
 
-    protected abstract void initDate();
+    protected abstract void initData();
 
 
     protected <T extends View> T bindView(int id) {

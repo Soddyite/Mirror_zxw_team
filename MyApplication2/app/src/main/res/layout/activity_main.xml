@@ -19,6 +19,7 @@
         android:src="@mipmap/mirror" />
 
     <TextView
+
         android:id="@+id/main_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,4 +28,7 @@
         android:layout_margin="20px"
         android:text="登录"
         android:textColor="#ffffff" />
+
+
 </RelativeLayout>
+

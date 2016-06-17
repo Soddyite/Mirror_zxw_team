@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 
 import java.io.IOException;
@@ -18,9 +19,14 @@ import java.io.IOException;
  */
 public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapter.MyViewHolder> {
     private Context context;
+    PageItemClickListener pageItemClickListener;
 
     public PageFragmentAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setPageItemClickListener(PageItemClickListener pageItemClickListener) {
+        this.pageItemClickListener = pageItemClickListener;
     }
 
     @Override
@@ -31,7 +37,16 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+
+        if (holder!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pageItemClickListener.onClick(position);
+                }
+            });
+        }
 
 
     }

@@ -3,6 +3,7 @@ package com.example.dllo.mirror.model.utils;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.dllo.mirror.model.base.MyApplication;
 import com.example.dllo.mirror.model.db.DaoMaster;
 import com.example.dllo.mirror.model.db.DaoSession;
 import com.example.dllo.mirror.model.db.Users;

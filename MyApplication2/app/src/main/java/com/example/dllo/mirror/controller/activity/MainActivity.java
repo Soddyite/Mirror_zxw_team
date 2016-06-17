@@ -1,9 +1,14 @@
 package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
+
+
+
+
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
+
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
@@ -12,6 +17,7 @@ import com.example.dllo.mirror.model.utils.VerticalViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainActivity extends BaseActivity implements PageFragment.HongXiangListener {
     private MainAdapter mainAdapter;
@@ -28,13 +34,14 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
 
     @Override
     protected void initView() {
+
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_viewpager);
         log = (TextView) findViewById(R.id.main_log);
         mainAdapter = new MainAdapter(getSupportFragmentManager());
     }
 
     @Override
-    protected void initDate() {
+    protected void initData() {
         fragmentList = new ArrayList<>();
         //像Viewpager加入Fragment,通过构造方法传入标题
         for (int i = 0; i < 5; i++) {
@@ -53,11 +60,16 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
             }
         });
 
+
     }
 
     //回掉的接口
     @Override
+
     public void change(int pos) {
         verticalViewPager.setCurrentItem(pos);
+
     }
+
+
 }
