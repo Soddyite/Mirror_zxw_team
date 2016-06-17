@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.controller.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,6 +153,8 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.show:
+                Intent intent = new Intent(this,DressResultActivity.class);
+                startActivity(intent);
                 break;
             case R.id.buy:
                 break;

@@ -1,19 +1,15 @@
 package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
-<<<<<<< HEAD
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
+
 
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
 
-=======
-import android.view.View;
->>>>>>> ccea5a67daac590639b1b9411d8691c1afb751d3
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.fragment.PageFragment;
@@ -22,7 +18,7 @@ import com.example.dllo.mirror.model.utils.VerticalViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
+
 public class MainActivity extends BaseActivity implements PageFragment.HongXiangListener {
     private MainAdapter mainAdapter;
     private VerticalViewPager verticalViewPager;
@@ -31,9 +27,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
     private TextView log;
 
 
-=======
-public class MainActivity extends BaseActivity{
->>>>>>> ccea5a67daac590639b1b9411d8691c1afb751d3
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
@@ -41,7 +34,7 @@ public class MainActivity extends BaseActivity{
 
     @Override
     protected void initView() {
-<<<<<<< HEAD
+
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_viewpager);
         log = (TextView) findViewById(R.id.main_log);
         mainAdapter = new MainAdapter(getSupportFragmentManager());
@@ -66,20 +59,16 @@ public class MainActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
-=======
->>>>>>> ccea5a67daac590639b1b9411d8691c1afb751d3
+
 
     }
 
     //回掉的接口
     @Override
-<<<<<<< HEAD
+
     public void change(int pos) {
         verticalViewPager.setCurrentItem(pos);
-=======
-    protected void initData() {
 
->>>>>>> ccea5a67daac590639b1b9411d8691c1afb751d3
     }
 
 

@@ -2,6 +2,7 @@ package com.example.dllo.mirror.controller.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,15 +19,18 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.controller.activity.DetailsActivity;
+import com.example.dllo.mirror.controller.activity.TopicDetailsActivity;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
+import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 
 /**
  * Created by dllo on 16/6/16.
  */
 @SuppressLint("ValidFragment")
-public class PageFragment extends Fragment implements View.OnClickListener {
+public class PageFragment extends Fragment implements View.OnClickListener, PageItemClickListener {
     private String title;
     private View titleLayout;
     private RecyclerView recyclerView;
@@ -72,10 +76,12 @@ public class PageFragment extends Fragment implements View.OnClickListener {
         popUpWindow();
         titleLayout.setOnClickListener(this);
         pageFragmentAdapter = new PageFragmentAdapter(getActivity());
+        pageFragmentAdapter.setPageItemClickListener(this);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 20));
         recyclerView.setAdapter(pageFragmentAdapter);
         scaleAnimation = new ScaleAnimation(1, 1.5f, 1, 1.5f);
         scaleAnimation.setDuration(1000);
+
 
     }
 
@@ -130,6 +136,7 @@ public class PageFragment extends Fragment implements View.OnClickListener {
                 pop.dismiss();
                 break;
 
+
         }
     }
 
@@ -183,8 +190,27 @@ public class PageFragment extends Fragment implements View.OnClickListener {
         toOneTV.setOnClickListener(this);
 
     }
+
+    @Override
+    public void onClick(int id) {
+
+
+        Intent intent = new Intent();
+        if (title.equals("專題分享")) {
+
+            intent.setClass(getContext(), TopicDetailsActivity.class);
+            startActivity(intent);
+        }else {
+            intent.setClass(getContext(), DetailsActivity.class);
+            startActivity(intent);
+        }
+
+
+    }
+
     public interface HongXiangListener {
         void change(int pos);
     }
+
 
 }
