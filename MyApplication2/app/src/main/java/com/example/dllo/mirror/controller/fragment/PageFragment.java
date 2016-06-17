@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +16,17 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.example.dllo.mirror.R;
+
 import com.example.dllo.mirror.controller.activity.DetailsActivity;
 import com.example.dllo.mirror.controller.activity.TopicDetailsActivity;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
 import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
+
+import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
+
 
 /**
  * Created by dllo on 16/6/16.
@@ -45,7 +47,6 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
     public PageFragment(String title) {
         this.title = title;
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -191,6 +192,7 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
 
     }
 
+
     @Override
     public void onClick(int id) {
 
@@ -207,6 +209,7 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
 
 
     }
+
 
     public interface HongXiangListener {
         void change(int pos);
