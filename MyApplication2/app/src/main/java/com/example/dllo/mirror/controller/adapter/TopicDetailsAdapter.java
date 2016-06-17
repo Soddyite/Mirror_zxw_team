@@ -3,6 +3,7 @@ package com.example.dllo.mirror.controller.adapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
 
 /**
@@ -10,13 +11,11 @@ import java.util.List;
  */
 public class TopicDetailsAdapter extends PagerAdapter {
 
-
     private List<View> views;
 
     public TopicDetailsAdapter(List<View> views) {
         this.views = views;
     }
-
 
     @Override
     public int getCount() {
@@ -33,15 +32,14 @@ public class TopicDetailsAdapter extends PagerAdapter {
         View view = views.get(position);
         container.addView(view);
         return view;
-    }
 
+    }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         View view = views.get(position);
         container.removeView(view);
     }
-
 
 
 }

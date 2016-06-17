@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+=======
+    android:orientation="vertical"
+>>>>>>> ccea5a67daac590639b1b9411d8691c1afb751d3
     tools:context=".controller.activity.MainActivity">
 
     <com.example.dllo.mirror.model.utils.VerticalViewPager
@@ -19,6 +23,7 @@
         android:src="@mipmap/mirror" />
 
     <TextView
+<<<<<<< HEAD
         android:id="@+id/main_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,3 +33,9 @@
         android:text="登录"
         android:textColor="#ffffff" />
 </RelativeLayout>
+=======
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="你好" />
+</LinearLayout>
+>>>>>>> ccea5a67daac590639b1b9411d8691c1afb751d3
