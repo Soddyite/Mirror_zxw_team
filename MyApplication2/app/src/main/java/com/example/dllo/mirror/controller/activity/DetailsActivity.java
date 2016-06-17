@@ -3,6 +3,7 @@ package com.example.dllo.mirror.controller.activity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
@@ -136,6 +137,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         // 联动方法
         listViewTop.setRelatedListView(listViewBottom);
 
+//        listViewTop.setFriction(ViewConfiguration.getScrollFriction() * 2);
     }
 
     @Override

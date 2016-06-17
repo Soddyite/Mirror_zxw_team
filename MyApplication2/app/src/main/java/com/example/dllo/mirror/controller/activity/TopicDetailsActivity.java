@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,12 +17,12 @@ import com.example.dllo.mirror.model.base.MyApplication;
 import com.example.dllo.mirror.model.bean.TopicDetailsData;
 import com.example.dllo.mirror.view.VerticalViewPager;
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by zouliangyu on 16/6/15.
+ * 专题分享
  */
 public class TopicDetailsActivity extends BaseActivity implements View.OnClickListener {
     // 垂直viewpager
