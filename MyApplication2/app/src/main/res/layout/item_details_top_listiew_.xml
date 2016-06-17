@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="50dp"
+        android:background="@mipmap/background">
+
+        <ImageView
+            android:id="@+id/white_line_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30px"
+            android:src="@mipmap/white" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/white_line_one"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15px"
+            android:text="SEE CONCEPT" />
+
+        <ImageView
+            android:id="@+id/white_line_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15px"
+            android:src="@mipmap/white" />
+
+        <TextView
+            android:id="@+id/details_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/white_line_two"
+            android:layout_alignRight="@id/white_line_two"
+            android:layout_below="@id/white_line_two"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15px"
+            android:text="家而苹果机阿尔派二炮姐" />
+
+    </RelativeLayout>
+</LinearLayout>
