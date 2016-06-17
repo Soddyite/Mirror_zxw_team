@@ -80,6 +80,8 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         }
         bottomListViewAdapter.setMyDatas(myDatas);
         listViewBottom.setAdapter(bottomListViewAdapter);
+        // 滚动条  不活动的时候隐藏，活动的时候也隐藏
+        listViewBottom.setVerticalScrollBarEnabled(true);
 
         // 下面的listview的滑动监听
         listViewBottom.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -128,6 +130,8 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
         topListViewAdapter.setMyDatasTwo(myDataTwos);
         listViewTop.setAdapter(topListViewAdapter);
+        // 滚动条  不活动的时候隐藏，活动的时候也隐藏
+        listViewTop.setVerticalScrollBarEnabled(true);
 
         // 联动方法
         listViewTop.setRelatedListView(listViewBottom);

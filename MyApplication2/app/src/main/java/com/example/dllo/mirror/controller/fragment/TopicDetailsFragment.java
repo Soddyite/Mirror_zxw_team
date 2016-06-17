@@ -8,7 +8,7 @@ import com.example.dllo.mirror.R;
 public class TopicDetailsFragment extends BaseFragment {
     @Override
     protected int getLayout() {
-        return R.layout.fragment_topic_details;
+        return R.layout.activity_topic_details_viewpager;
     }
 
     public TopicDetailsFragment() {
