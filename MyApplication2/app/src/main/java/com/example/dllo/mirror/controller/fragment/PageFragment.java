@@ -1,14 +1,17 @@
 package com.example.dllo.mirror.controller.fragment;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
 import com.example.dllo.mirror.R;
 
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
@@ -31,8 +35,9 @@ import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 /**
  * Created by dllo on 16/6/16.
  */
-@SuppressLint("ValidFragment")
-public class PageFragment extends Fragment implements View.OnClickListener, PageItemClickListener {
+
+public class PageFragment extends BaseFragment implements View.OnClickListener, PageItemClickListener {
+
     private String title;
     private View titleLayout;
     private RecyclerView recyclerView;
@@ -43,15 +48,26 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
     private PopupWindow pop;
     ScaleAnimation scaleAnimation;
 
-    @SuppressLint("ValidFragment")
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        hongXiangListener = (HongXiangListener) context;
+    }
+
     public PageFragment(String title) {
         this.title = title;
     }
-   
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_page, null);
+    protected int getLayout() {
+        return R.layout.fragment_page;
+    }
+
+    @Override
+    protected void initView(View view) {
+
+
         titleLayout = view.findViewById(R.id.pagefragment_titlelayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.pagefragment_recycleView);
         titleTv = (TextView) view.findViewById(R.id.pagefragment_title);
@@ -62,19 +78,11 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
             shopCar.setVisibility(View.VISIBLE);
         }
         titleTv.setText(title);
-        return view;
-
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        hongXiangListener = (HongXiangListener) context;
-    }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void initData() {
         popUpWindow();
         titleLayout.setOnClickListener(this);
         pageFragmentAdapter = new PageFragmentAdapter(getActivity());
@@ -83,7 +91,6 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
         recyclerView.setAdapter(pageFragmentAdapter);
         scaleAnimation = new ScaleAnimation(1, 1.1f, 1, 1.1f);
         scaleAnimation.setDuration(1000);
-
 
     }
 
@@ -167,6 +174,7 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
                 titleLayout.setVisibility(View.VISIBLE);
                 //我的购物车界面特殊,判断
                 if (!(title.equals("我的購物車"))) {
+
                     recyclerView.setVisibility(View.VISIBLE);
                 }
                 if (title.equals("我的購物車")) {
@@ -193,16 +201,16 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
 
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onClick(int id) {
 
 
         Intent intent = new Intent();
         if (title.equals("專題分享")) {
-
             intent.setClass(getContext(), TopicDetailsActivity.class);
             startActivity(intent);
-        }else {
+        } else {
             intent.setClass(getContext(), DetailsActivity.class);
             startActivity(intent);
         }

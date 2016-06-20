@@ -2,9 +2,6 @@ package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
 
-
-
-
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
@@ -45,7 +42,7 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
         fragmentList = new ArrayList<>();
         //像Viewpager加入Fragment,通过构造方法传入标题
         for (int i = 0; i < 5; i++) {
-            PageFragment pageFragment = new PageFragment(titles[i]);
+            PageFragment pageFragment =new PageFragment(titles[i]);
             fragmentList.add(pageFragment);
         }
         mainAdapter = new MainAdapter(getSupportFragmentManager());

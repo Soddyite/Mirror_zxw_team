@@ -1,16 +1,21 @@
 package com.example.dllo.mirror.controller.fragment;
 
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.dllo.mirror.model.base.MyApplication;
 
 /**
  * Created by zouliangyu on 16/6/13.
  */
 public abstract class BaseFragment extends Fragment {
+    private Context mContext;
+
     // 加载布局
     @Nullable
     @Override
@@ -18,11 +23,17 @@ public abstract class BaseFragment extends Fragment {
         return inflater.inflate(getLayout(), container, false);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = MyApplication.getContext();
+    }
+
     // 加载组件
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initView();
+        initView(view);
     }
 
     // 加载数据
@@ -34,7 +45,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayout();
 
-    protected abstract void initView();
+    protected abstract void initView( View view);
 
     protected abstract void initData();
 

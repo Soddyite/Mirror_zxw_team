@@ -1,16 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="650px"
+        android:layout_width="450px"
         android:layout_height="800px"
-        android:layout_marginLeft="50px"
+        android:layout_marginLeft="15px"
         android:src="@mipmap/gjx" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="250px"
+        android:layout_alignBottom="@+id/item_image"
+        android:layout_alignLeft="@+id/item_image"
+        android:layout_alignRight="@+id/item_image"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+
+            android:orientation="vertical"
+            android:padding="20px">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="GRAFIK:PLASTIC"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥1800"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bulider"
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="韓國首爾" />
+
+            <ImageView
+                android:id="@+id/black_line"
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:src="@mipmap/black_horizontal" />
+
+            <TextView
+                android:id="@+id/bottom_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="男女同款丨透明大框閱讀鏡" />
+        </LinearLayout>
 
 
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
