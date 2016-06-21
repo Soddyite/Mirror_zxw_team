@@ -65,6 +65,4 @@ public class UserBean {
             this.uid = uid;
         }
     }
-
-
 }

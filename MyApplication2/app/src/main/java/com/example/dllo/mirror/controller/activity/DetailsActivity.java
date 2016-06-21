@@ -160,6 +160,11 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.buy:
+
+                //购买
+
+
+
                 break;
             // 分享
             case R.id.share:
