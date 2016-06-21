@@ -13,7 +13,6 @@ import com.example.dllo.mirror.model.bean.UserBean;
 import com.example.dllo.mirror.model.db.Users;
 import com.example.dllo.mirror.model.db.UsersDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
-import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.okhttp.Callback;
@@ -25,7 +24,6 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
@@ -46,8 +44,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private Platform platform;
     private UsersDao usersDao;
     ImageView closeIv;
-    private Gson gson;
-    OkHttpClientManager clientManager;
 
 
     @Override
@@ -75,8 +71,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initData() {
-
-        clientManager = OkHttpClientManager.getInstance();
         closeIv.setOnClickListener(this);
 
         creatUserButton.setOnClickListener(this);
@@ -101,56 +95,37 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
                 String postUrl1 = "http://api101.test.mirroreye.cn/index.php/user/login";
 
-                Map<String, String> map = new HashMap<>();
-                map.put("phone_number", phoneEt.getText().toString());
-                map.put("password", passwordEt.getText().toString());
-                clientManager.postAsyn(postUrl1, new OkHttpClientManager.ResultCallback<UserBean>() {
+                //请求体
+                FormEncodingBuilder builder1 = new FormEncodingBuilder();
+                builder1.add("phone_number", phoneEt.getText().toString());
+                builder1.add("password", passwordEt.getText().toString());
+
+
+                //创建请求体
+                RequestBody body1 = builder1.build();
+                //创建请求
+                Request request1 = new Request.Builder().url(postUrl1).post(body1).build();
+
+                //发出异步post请求
+                client.newCall(request1).enqueue(new Callback() {
                     @Override
-                    public void onError(Request request, Exception e) {
+                    public void onFailure(Request request, IOException e) {
+
+                        Log.d("SignUpActivity", "error");
 
                     }
 
                     @Override
-                    public void onResponse(UserBean response) {
+                    public void onResponse(Response response) throws IOException {
 
-                        Log.d("SignUpActivity", "response.getData():" + response.getResult());
+                        Log.d("SignUpActivity", response.body().string());
 
-                        addDb(response);
-                        finish();
+
+                        addDb(response.body().string());
+
 
                     }
-                }, map);
-
-
-//                //请求体
-//                FormEncodingBuilder builder1 = new FormEncodingBuilder();
-//                builder1.add("phone_number", phoneEt.getText().toString());
-//                builder1.add("password", passwordEt.getText().toString());
-//
-//
-//                //创建请求体
-//                RequestBody body1 = builder1.build();
-//                //创建请求
-//                Request request1 = new Request.Builder().url(postUrl1).post(body1).build();
-//
-//                //发出异步post请求
-//                client.newCall(request1).enqueue(new Callback() {
-//                    @Override
-//                    public void onFailure(Request request, IOException e) {
-//
-//                        Log.d("SignUpActivity", "error");
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Response response) throws IOException {
-//
-//                        Log.d("SignUpActivity", response.body().string());
-//
-//                        addDb(response.body().string());
-//
-//                    }
-//                });
+                });
 
 
                 break;
@@ -185,8 +160,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         platform.setPlatformActionListener(new PlatformActionListener() {
             @Override
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-
-
                 Log.d("SignUpActivity", "success");
                 Log.d("SignUpActivity", platform.getDb().getUserId());
                 Log.d("SignUpActivity", platform.getDb().getToken());
@@ -214,19 +187,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    private void addDb(UserBean response) {
-
-
-        if (!response.equals("")) {
-
-            gson = new Gson();
-
-            usersDao.deleteAll();
-            usersDao.insert(new Users(1l, response.getData().getUid(), response.getData().getToken()));
-
-            Log.d("SignUpActivity", response.getData().getUid());
-            Log.d("SignUpActivity", response.getData().getToken());
-        }
+    private void addDb(String response) {
+        Gson gson = new Gson();
+        UserBean bean = gson.fromJson(response, new TypeToken<UserBean>() {
+        }.getType());
+        usersDao.deleteAll();
+        usersDao.insert(new Users(1l, bean.getData().getUid(), bean.getData().getToken()));
     }
 
 

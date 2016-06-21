@@ -43,9 +43,6 @@ public class PageFragment extends Fragment implements View.OnClickListener, Page
     private PopupWindow pop;
     ScaleAnimation scaleAnimation;
 
-    public PageFragment() {
-    }
-
     @SuppressLint("ValidFragment")
     public PageFragment(String title) {
         this.title = title;
