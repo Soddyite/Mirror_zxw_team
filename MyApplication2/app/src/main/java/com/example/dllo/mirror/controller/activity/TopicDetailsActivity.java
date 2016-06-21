@@ -1,6 +1,7 @@
 package com.example.dllo.mirror.controller.activity;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -98,8 +99,11 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
                         verticalViewPager.setAdapter(topicDetailsAdapter);
                         // viewpager滑动监听
                         verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+
                             @Override
                             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
 
                             }
 
@@ -110,6 +114,7 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
 
                             @Override
                             public void onPageScrollStateChanged(int state) {
+
 
                             }
                         });
