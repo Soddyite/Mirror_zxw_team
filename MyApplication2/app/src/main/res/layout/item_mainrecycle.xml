@@ -9,7 +9,7 @@
         android:layout_width="450px"
         android:layout_height="800px"
         android:layout_marginLeft="15px"
-        android:src="@mipmap/gjx" />
+        android:src="@mipmap/hxglass" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -34,6 +34,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/item_glass_name"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -41,6 +42,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/item_glass_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="¥1800"
@@ -49,7 +51,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/bulider"
+                android:id="@+id/item_glass_place"
                 android:layout_width="wrap_content"
                 android:layout_height="0px"
                 android:layout_weight="1"
@@ -63,7 +65,7 @@
                 android:src="@mipmap/black_horizontal" />
 
             <TextView
-                android:id="@+id/bottom_tv"
+                android:id="@+id/item_glass_type"
                 android:layout_width="wrap_content"
                 android:layout_height="0px"
                 android:layout_weight="1"

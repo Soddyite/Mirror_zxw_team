@@ -32,6 +32,9 @@ import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 
 
+import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
+
+
 /**
  * Created by dllo on 16/6/16.
  */
@@ -201,11 +204,10 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
     }
 
+
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onClick(int id) {
-
-
         Intent intent = new Intent();
         if (title.equals("專題分享")) {
             intent.setClass(getContext(), TopicDetailsActivity.class);
@@ -217,6 +219,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
 
     }
+
 
     public interface HongXiangListener {
         void change(int pos);

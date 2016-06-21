@@ -18,13 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
+            android:listSelector="@android:color/transparent"
             android:scrollbars="none" />
+        <!-- android:listSelector="@android:color/transparent"
+        listview点击没有效果, 空白-->
 
         <com.example.dllo.mirror.view.RelationListView
             android:id="@+id/lv2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
+            android:listSelector="@android:color/transparent"
             android:scrollbars="none" />
         <!-- android:scrollbars="none"
     设置滚动头条 不活动的时候隐藏，活动的时候也隐藏-->

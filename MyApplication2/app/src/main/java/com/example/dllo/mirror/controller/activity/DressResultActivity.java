@@ -52,7 +52,7 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initData() {
         // 播放的视频
-        videoUrl = "http://222.161.205.182/youku/6975BB18A6E3F828B11ABE2BE7/0300200100576218C4CF2B052C4723710FE169-C540-E4DF-B74D-F9ABA4405961.mp4";
+        videoUrl = "http://222.161.205.182/youku/6975BB48C6033820D0E546200A/0300200100576218C4CF2B052C4723710FE169-C540-E4DF-B74D-F9ABA4405961.mp4";
         dressResultAdapter = new DressResultAdapter(DressResultActivity.this);
 
         mediaController = new MediaController(DressResultActivity.this);
