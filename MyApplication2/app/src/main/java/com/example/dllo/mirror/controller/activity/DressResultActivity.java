@@ -89,6 +89,8 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
+
+
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.example.dllo.mirror.controller.activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.Animation;
@@ -12,7 +11,6 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.BottomListViewAdapter;
@@ -67,12 +65,10 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         // 购买
         buyIv = bindView(R.id.buy);
 
-
     }
 
     @Override
     protected void initData() {
-
 
         exitIv.setOnClickListener(this);
         showTv.setOnClickListener(this);
@@ -125,7 +121,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
                 }
 
-
 //                listViewBottom.setFriction(ViewConfiguration.getScrollFriction());
             }
 
@@ -156,10 +151,12 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.show:
-                Intent intent = new Intent(this,DressResultActivity.class);
+                Intent intent = new Intent(this, DressResultActivity.class);
                 startActivity(intent);
                 break;
             case R.id.buy:
+                Intent intentBuy = new Intent(this, BuyDetailsActivity.class);
+                startActivity(intentBuy);
                 break;
             // 分享
             case R.id.share:
@@ -167,7 +164,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
                 break;
         }
     }
-
 
     /**
      * 下面listview的 头布局
@@ -191,7 +187,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         viewThird.setMinimumWidth(width);
         listViewBottom.addHeaderView(viewThird);
 
-
         // 上层listveiw
         // 第一个头布局
         View viewFirst = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.header_first, null);
@@ -206,10 +201,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         viewSecond1.setMinimumWidth(width);
         listViewTop.addHeaderView(viewSecond1);
 
-
     }
-
-
 
     private void showShare() {
         ShareSDK.initSDK(this);
@@ -217,7 +209,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
 
-// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+        // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
         //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
         oks.setTitle(getString(R.string.share));
@@ -236,11 +228,8 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
         oks.setSiteUrl("http://sharesdk.cn");
 
-// 启动分享GUI
+        // 启动分享GUI
         oks.show(this);
     }
-
-
-
 
 }

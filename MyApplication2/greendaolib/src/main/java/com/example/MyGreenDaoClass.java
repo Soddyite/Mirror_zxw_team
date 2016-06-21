@@ -7,20 +7,20 @@ import de.greenrobot.daogenerator.Schema;
 
 public class MyGreenDaoClass {
 
-    public static void main(String[] args){
-        Schema schema = new Schema(1,"com.example.dllo.mirror.model.db");
+    public static void main(String[] args) {
+        Schema schema = new Schema(1, "com.example.dllo.mirror.model.db");
         addNote(schema);
 
 
         try {
-            new DaoGenerator().generateAll(schema,"./app/src/main/java");
+            new DaoGenerator().generateAll(schema, "./app/src/main/java");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    public static void addNote(Schema schema){
+    public static void addNote(Schema schema) {
 
         //添加表名
         Entity entity = schema.addEntity("Users");
@@ -31,9 +31,14 @@ public class MyGreenDaoClass {
         entity.addStringProperty("uid");
         entity.addStringProperty("token");
 
+        // 地址
+        Entity entityAddress = schema.addEntity("Address");
+        entityAddress.addIdProperty().autoincrement().autoincrement();
+        entityAddress.addStringProperty("name");
+        entityAddress.addStringProperty("num");
+        entityAddress.addStringProperty("address");
+
     }
-
-
 
 
 }
