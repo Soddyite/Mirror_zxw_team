@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -74,10 +75,10 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(this).inflate(R.layout.activity_custom, null);
 
-        Button btnWX, btnAli;
+        LinearLayout btnWX, btnAli;
 
-        btnWX = (Button) view.findViewById(R.id.btn_wx);
-        btnAli = (Button) view.findViewById(R.id.btn_ali);
+        btnWX = (LinearLayout) view.findViewById(R.id.activity_custom_wxpay);
+        btnAli = (LinearLayout) view.findViewById(R.id.activity_custom_alipay);
 
         btnWX.setOnClickListener(this);
         btnAli.setOnClickListener(this);
@@ -111,10 +112,10 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 }
                 break;
 
-            case R.id.btn_wx:
+            case R.id.activity_custom_wxpay:
                 pay.startPay(FuQianLa.WX);
                 break;
-            case R.id.btn_ali:
+            case R.id.activity_custom_alipay:
                 pay.startPay(FuQianLa.ALI);
                 break;
 

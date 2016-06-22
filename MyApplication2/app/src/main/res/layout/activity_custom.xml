@@ -19,15 +19,54 @@
         android:layout_height="1px"
         android:background="@color/colorBlack" />
 
-    <Button
-        android:id="@+id/btn_wx"
+    <LinearLayout
+        android:id="@+id/activity_custom_wxpay"
         style="@style/PayBtnStyle"
-        android:text="@string/wxpay" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_ali"
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/weixinpay" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:background="@drawable/osp_btn_pay"
+            android:text="@string/wxpay"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/activity_custom_alipay"
         style="@style/PayBtnStyle"
-        android:text="@string/alipay" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/alipay" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:background="@drawable/osp_btn_pay"
+            android:text="@string/alipay"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
 
 </LinearLayout>
