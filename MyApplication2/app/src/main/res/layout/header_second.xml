@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF">
+
     <ImageView
         android:id="@+id/iv"
         android:layout_width="wrap_content"
@@ -18,6 +19,26 @@
         android:layout_alignLeft="@id/iv"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:text="复古花纹阅读镜"
+        android:text="女款"
+        android:textColor="#000000" />
+
+    <View
+        android:id="@+id/vertical_white_line"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/type_tv"
+        android:layout_alignTop="@id/type_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/type_tv"
+        android:background="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/type_tv"
+        android:layout_alignTop="@id/type_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/vertical_white_line"
+        android:text="晶粉猫眼太阳镜"
         android:textColor="#000000" />
 </RelativeLayout>

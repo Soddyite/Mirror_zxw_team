@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ease.paysdk.FuQianLa;
 import com.ease.paysdk.bean.FuQianLaResult;
+import com.example.dllo.mirror.R;
 
 /**
  * Created by siqi on 16/4/5.

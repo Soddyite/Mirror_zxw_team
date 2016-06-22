@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.dllo.mirror.model.base.MyApplication;
+import com.example.dllo.mirror.model.db.Address;
+import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.db.DaoMaster;
 import com.example.dllo.mirror.model.db.DaoSession;
 import com.example.dllo.mirror.model.db.Users;
@@ -20,6 +22,9 @@ public class GreenDaoSingleton {
     private UsersDao usersDao;
     private Context context;
     private DaoMaster.DevOpenHelper helper;
+
+
+    private AddressDao addressDao;
 
 
     private static GreenDaoSingleton ourInstance = new GreenDaoSingleton();
@@ -66,6 +71,14 @@ public class GreenDaoSingleton {
             usersDao = getDaoSession().getUsersDao();
         }
         return usersDao;
+    }
+
+
+    public AddressDao getAddressDao() {
+        if (addressDao == null) {
+            addressDao = getDaoSession().getAddressDao();
+        }
+        return addressDao;
     }
 
 

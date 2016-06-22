@@ -8,9 +8,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.ease.onesecondpaydemo.utils.OrderUtils;
 import com.ease.paysdk.FuQianLa;
 import com.ease.paysdk.FuQianLaPay;
+import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.model.utils.OrderUtils;
 
 /**
  * Created by siqi on 16/4/5.
