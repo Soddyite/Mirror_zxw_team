@@ -55,6 +55,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        //子类引用父类对象
         hongXiangListener = (HongXiangListener) context;
     }
 
@@ -69,8 +70,6 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     protected void initView(View view) {
-
-
         titleLayout = view.findViewById(R.id.pagefragment_titlelayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.pagefragment_recycleView);
         titleTv = (TextView) view.findViewById(R.id.pagefragment_title);
@@ -92,14 +91,14 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         pageFragmentAdapter.setPageItemClickListener(this);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 20));
         recyclerView.setAdapter(pageFragmentAdapter);
-        scaleAnimation = new ScaleAnimation(1, 1.1f, 1, 1.1f);
-        scaleAnimation.setDuration(1000);
+
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //标题
             case R.id.pagefragment_titlelayout:
                 recyclerView.setVisibility(View.INVISIBLE);
                 titleLayout.setVisibility(View.INVISIBLE);
@@ -123,6 +122,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
                         break;
                 }
                 break;
+
             case R.id.pop_one:
                 hongXiangListener.change(0);
                 pop.dismiss();
@@ -158,6 +158,8 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
      * @param textview
      */
     private void TextViewChange(TextView textview) {
+        scaleAnimation = new ScaleAnimation(1, 1.1f, 1, 1.1f);
+        scaleAnimation.setDuration(1000);
         textview.setTextColor(0x99ffffff);
         textview.setAnimation(scaleAnimation);
     }
@@ -220,7 +222,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
     }
 
-
+//接口
     public interface HongXiangListener {
         void change(int pos);
     }

@@ -11,11 +11,8 @@ import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.fragment.PageFragment;
 import com.example.dllo.mirror.model.utils.VerticalViewPager;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 public class MainActivity extends BaseActivity implements PageFragment.HongXiangListener {
     private MainAdapter mainAdapter;
     private VerticalViewPager verticalViewPager;

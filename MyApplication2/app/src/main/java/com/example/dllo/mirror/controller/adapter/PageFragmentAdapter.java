@@ -2,6 +2,8 @@ package com.example.dllo.mirror.controller.adapter;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,9 @@ import android.widget.ImageView;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -39,6 +44,14 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
+
+        DisplayImageOptions options;
+        options = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)//设置下载的图片是否缓存在内存中
+                .cacheOnDisk(true)//设置下载的图片是否缓存在SD卡中
+                .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
+                .build();//构建完成
+        ImageLoader.getInstance().displayImage("http://cdn.duitang.com/uploads/item/201511/21/20151121222701_Qym8J.jpeg", holder.imageView,options);
         if (holder!=null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
