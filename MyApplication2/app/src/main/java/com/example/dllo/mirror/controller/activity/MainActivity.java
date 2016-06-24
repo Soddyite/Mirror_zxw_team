@@ -54,7 +54,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
             }
         });
 
-
     }
 
     //回掉的接口

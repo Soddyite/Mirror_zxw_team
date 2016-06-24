@@ -1,6 +1,7 @@
 package com.example.dllo.mirror.controller.activity;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,11 +17,15 @@ import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.TopicDetailsAdapter;
 import com.example.dllo.mirror.model.base.MyApplication;
 import com.example.dllo.mirror.model.bean.TopicDetailsData;
+import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 import com.example.dllo.mirror.view.VerticalViewPager;
 import com.google.gson.Gson;
+import com.squareup.okhttp.Request;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
@@ -67,16 +72,22 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
         bindView(R.id.share_iv).setOnClickListener(this);
 
 
-        RequestQueue requestQueue = Volley.newRequestQueue(TopicDetailsActivity.this);
-        StringRequest request = new StringRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=10179&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755014&p_=17387&v_=40050303&d_=ios&osv_=8.3&version=1&a_=lol",
-                new Response.Listener<String>() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("token", "");
+        params.put("device_type", "1");
+
+//        OkHttpClientManager.post()
+
+        OkHttpClientManager.postAsyn("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=10179&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755014&p_=17387&v_=40050303&d_=ios&osv_=8.3&version=1&a_=lol",
+                new OkHttpClientManager.ResultCallback<TopicDetailsData>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onError(Request request, Exception e) {
+                    }
 
+                    @Override
+                    public void onResponse(TopicDetailsData response) {
 
-                        Gson gson = new Gson();
-                        topicDetailsData = gson.fromJson(response, TopicDetailsData.class);
-
+                        topicDetailsData = response;
                         // 加载的view的集合
                         List<View> views = new ArrayList<>();
                         // 数据页数  5应该是   topicDetailsData.getData().size()
@@ -91,15 +102,17 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
                             titleTv.setText(topicDetailsData.getData().get(i).getTitle());
                             descTc.setText(topicDetailsData.getData().get(i).getDesc());
                             views.add(view);
-
                         }
 
                         topicDetailsAdapter = new TopicDetailsAdapter(views);
                         verticalViewPager.setAdapter(topicDetailsAdapter);
                         // viewpager滑动监听
                         verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+
                             @Override
                             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
 
                             }
 
@@ -111,16 +124,67 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
                             @Override
                             public void onPageScrollStateChanged(int state) {
 
+
                             }
                         });
-
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        requestQueue.add(request);
+                }, params);
+
+
+//        RequestQueue requestQueue = Volley.newRequestQueue(TopicDetailsActivity.this);
+//        StringRequest request = new StringRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=10179&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755014&p_=17387&v_=40050303&d_=ios&osv_=8.3&version=1&a_=lol",
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//1
+//                        Gson gson = new Gson();
+//                        topicDetailsData = gson.fromJson(response, TopicDetailsData.class);
+//
+//                        // 加载的view的集合
+//                        List<View> views = new ArrayList<>();
+//                        // 数据页数  5应该是   topicDetailsData.getData().size()
+//                        for (int i = 0; i < 5; i++) {
+//                            // 同一个view
+//                            View view = LayoutInflater.from(MyApplication.getContext()).inflate(
+//                                    R.layout.activity_topic_details_viewpager, null);
+//                            textView = (TextView) view.findViewById(R.id.text_tv);
+//                            titleTv = (TextView) view.findViewById(R.id.title_tv);
+//                            descTc = (TextView) view.findViewById(R.id.desc_tv);
+//                            textView.setText(topicDetailsData.getData().get(i).getId());
+//                            titleTv.setText(topicDetailsData.getData().get(i).getTitle());
+//                            descTc.setText(topicDetailsData.getData().get(i).getDesc());
+//                            views.add(view);
+//
+//                        }
+//
+//                        topicDetailsAdapter = new TopicDetailsAdapter(views);
+//                        verticalViewPager.setAdapter(topicDetailsAdapter);
+//                        // viewpager滑动监听
+//                        verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//                            @Override
+//                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onPageSelected(int position) {
+//                                bottomIv.setImageResource(image[position]);
+//                            }
+//
+//                            @Override
+//                            public void onPageScrollStateChanged(int state) {
+//
+//                            }
+//                        });
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//            }
+//        });
+//        requestQueue.add(request);
 
 
     }
@@ -128,11 +192,12 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            // 退出
             case R.id.exit_iv:
                 finish();
                 break;
+            // 分享
             case R.id.share_iv:
-
                 showShare();
                 break;
         }

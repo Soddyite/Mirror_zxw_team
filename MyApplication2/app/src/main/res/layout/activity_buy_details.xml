@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:id="@+id/buy_details_relativelayout">
+
+    <TextView
+        android:id="@+id/buy_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="购买详情"
+        android:textColor="#000000"
+        android:textSize="36px" />
+
+    <ImageView
+        android:id="@+id/buy_details_exit_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:src="@mipmap/chahao" />
+
+    <ImageView
+        android:id="@+id/buy_details_black_line_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buy_details_tv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/black_horizontal" />
+
+    <RelativeLayout
+        android:id="@+id/add_address"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@id/buy_details_black_line_iv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/buy_details_receiver_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="请添加收件人信息"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/buy_details_add_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="添加地址"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/buy_details_add_address"
+            android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/glass_details"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/add_address"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff">
+
+        <ImageView
+            android:id="@+id/buy_details_glass_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/exit" />
+
+        <TextView
+            android:id="@+id/buy_details_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/buy_details_glass_iv"
+            android:text="SPRING STRINGS"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/buy_details_desc_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/buy_details_title_tv"
+            android:layout_below="@id/buy_details_title_tv"
+            android:layout_marginTop="15dp"
+            android:text="54432854623514768471"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/buy_details_money_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/buy_details_desc_tv"
+            android:layout_below="@id/buy_details_desc_tv"
+            android:layout_marginTop="10dp"
+            android:text="$1280"
+            android:textColor="@android:color/holo_red_dark" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buy_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/glass_details"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="23dp"
+        android:background="@android:color/holo_red_light"
+        android:text="确认下单"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>

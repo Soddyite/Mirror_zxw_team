@@ -13,7 +13,6 @@
         android:layout_marginTop="40px"
         android:src="@mipmap/share_icon" />
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,26 +33,58 @@
 
         <ImageView
             android:id="@+id/white_line1"
-            android:layout_width="520px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="36px"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20px"
-            android:text="复古柔黑阅读镜"
-            android:textColor="#ffffff"
-            android:textSize="36px" />
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/header_first_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20px"
+                android:text="女款"
+                android:textColor="#ffffff"
+                android:textSize="36px" />
+
+            <View
+                android:id="@+id/white_vertical_line"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/header_first_name_tv"
+                android:layout_alignTop="@id/header_first_name_tv"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/header_first_name_tv"
+                android:background="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/header_first_name_tv"
+                android:layout_alignTop="@id/header_first_name_tv"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/white_vertical_line"
+                android:text="晶粉猫眼太阳镜"
+                android:textColor="#ffffff"
+                android:textSize="36px" />
+
+        </RelativeLayout>
 
         <ImageView
-            android:layout_width="520px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="20px"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/white" />
 
         <TextView
@@ -68,7 +99,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="60px"
             android:layout_marginTop="60px"
             android:drawableLeft="@mipmap/money"
             android:text="998"
@@ -76,15 +106,14 @@
             android:textSize="30px" />
     </LinearLayout>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40px"
         android:drawableBottom="@mipmap/down"
         android:drawablePadding="14px"
+        android:paddingBottom="40dp"
         android:text="滑动浏览详情"
         android:textColor="#ffffff" />
 </RelativeLayout>

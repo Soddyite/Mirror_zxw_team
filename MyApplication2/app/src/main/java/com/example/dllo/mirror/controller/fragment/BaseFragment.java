@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.controller.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +17,11 @@ import com.example.dllo.mirror.model.base.MyApplication;
 public abstract class BaseFragment extends Fragment {
     private Context mContext;
 
+
+    public Context getmContext() {
+        return mContext;
+    }
+
     // 加载布局
     @Nullable
     @Override
@@ -23,11 +29,14 @@ public abstract class BaseFragment extends Fragment {
         return inflater.inflate(getLayout(), container, false);
     }
 
+
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
         mContext = MyApplication.getContext();
     }
+
 
     // 加载组件
     @Override

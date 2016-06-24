@@ -2,6 +2,7 @@ package com.example.dllo.mirror.controller.fragment;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -52,12 +53,20 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     ScaleAnimation scaleAnimation;
 
 
+
+
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
         //子类引用父类对象
-        hongXiangListener = (HongXiangListener) context;
+        hongXiangListener = (HongXiangListener) activity;
     }
+
+    public PageFragment() {
+    }
+
+    @SuppressLint("ValidFragment")
 
     public PageFragment(String title) {
         this.title = title;
@@ -212,10 +221,10 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     public void onClick(int id) {
         Intent intent = new Intent();
         if (title.equals("專題分享")) {
-            intent.setClass(getContext(), TopicDetailsActivity.class);
+            intent.setClass(getmContext(), TopicDetailsActivity.class);
             startActivity(intent);
         } else {
-            intent.setClass(getContext(), DetailsActivity.class);
+            intent.setClass(getmContext(), DetailsActivity.class);
             startActivity(intent);
         }
 
