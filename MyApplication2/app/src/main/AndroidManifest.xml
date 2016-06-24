@@ -49,9 +49,12 @@
         <activity android:name=".controller.activity.DressResultActivity" />
         <activity android:name=".controller.activity.RegisterActivity" />
         <activity android:name=".controller.activity.TopicDetailsActivity" />
-        <activity android:name=".controller.activity.BuyDetailsActivity" />
+        <activity
+            android:name=".controller.activity.BuyDetailsActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".controller.activity.MyAddressActivity" />
         <activity android:name=".controller.activity.AddAddressActivity" />
+        <activity android:name=".controller.activity.EditAddressActivity" />
 
 
         <activity
