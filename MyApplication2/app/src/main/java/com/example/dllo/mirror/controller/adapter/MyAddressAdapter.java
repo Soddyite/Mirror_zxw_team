@@ -33,12 +33,14 @@ public class MyAddressAdapter extends BaseAdapter {
     private ViewHolder viewHolder;
     Activity a;
 
+    private List<Address> addressList;
+
 
     public MyAddressAdapter(Context context) {
         this.context = context;
     }
 
-    private List<Address> addressList;
+
 
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
@@ -96,6 +98,15 @@ public class MyAddressAdapter extends BaseAdapter {
             }
         });
 
+        viewHolder.delIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addressDao.delete(addressList.get(addressList.size() - position -1));
+                addressList.remove(addressList.size() - position - 1);
+                notifyDataSetChanged();
+            }
+        });
+
 
         return convertView;
     }
@@ -112,7 +123,7 @@ public class MyAddressAdapter extends BaseAdapter {
         TextView delTv;
         RelativeLayout relativeLayout;
         ImageView editIv;
-
+        ImageView delIv;
 
         public ViewHolder(View itemView) {
             nameTv = (TextView) itemView.findViewById(R.id.item_receiver_name_tv);
@@ -121,8 +132,7 @@ public class MyAddressAdapter extends BaseAdapter {
             delTv = (TextView) itemView.findViewById(R.id.item_del_tv);
             relativeLayout = (RelativeLayout) itemView.findViewById(R.id.item_address_relativelayout);
             editIv = (ImageView) itemView.findViewById(R.id.item_edit_iv);
-
-
+            delIv = (ImageView) itemView.findViewById(R.id.item_del_iv);
 //            relativeLayout.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {

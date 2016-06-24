@@ -10,6 +10,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:background="#ffffff"
             android:id="@+id/item_address_relativelayout"
             android:layout_width="match_parent"
             android:layout_height="100dp">
@@ -73,12 +74,18 @@
                 android:id="@+id/item_edit_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignTop="@id/item_address"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_toRightOf="@id/item_address"
                 android:src="@mipmap/edit" />
+            <ImageView
+                android:id="@+id/item_del_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/del"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/item_edit_iv"/>
 
             <TextView
                 android:id="@+id/item_num_tv"
@@ -99,6 +106,7 @@
             android:background="@android:color/holo_red_light"
             android:gravity="center"
             android:text="删除" />
+
 
     </LinearLayout>
 </LinearLayout>

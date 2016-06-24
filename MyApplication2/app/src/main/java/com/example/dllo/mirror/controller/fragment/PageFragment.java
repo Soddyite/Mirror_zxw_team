@@ -177,7 +177,17 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
             //退出
             case R.id.main_exit:
 
+                usersDao = GreenDaoSingleton.getOurInstance().getUsersDao();
+                List<Users> userses = usersDao.queryBuilder().list();
+
+                if (userses.size() > 0) {
+
                     showDialog();
+
+                }else {
+
+                    Toast.makeText(MyApplication.getContext(), "还未登陆", Toast.LENGTH_SHORT).show();
+                }
                 pop.dismiss();
                 break;
 
@@ -198,7 +208,6 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
                         usersDao.deleteAll();
                         List<Users> userses = usersDao.queryBuilder().list();
                         Log.d("PageFragment", "userses.size():" + userses.size());
-
 
 
                     }

@@ -21,9 +21,11 @@ import android.view.View;
 import android.widget.TextView;
 
 
+
 import com.ease.paysdk.FuQianLa;
 import com.ease.paysdk.FuQianLaPay;
 import com.ease.paysdk.bean.FuQianLaResult;
+
 import com.example.dllo.mirror.R;
 
 import com.example.dllo.mirror.model.utils.OrderUtils;
@@ -31,7 +33,6 @@ import com.example.dllo.mirror.model.utils.OrderUtils;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
-
 import java.util.List;
 
 
