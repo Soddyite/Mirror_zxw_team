@@ -3,6 +3,7 @@ package com.example.dllo.mirror.controller.activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.db.Address;
@@ -24,6 +25,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private String num;
     private String address;
     private AddressDao addressDao;
+
+    private List<Address> addressList;
+
 
     @Override
     protected int getLayout() {
@@ -60,6 +64,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
 //        }
 
+        addressList = addressDao.queryBuilder().list();
+
+
     }
 
     @Override
@@ -74,20 +81,21 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 num = inputNum.getText().toString();
                 address = inputAddress.getText().toString();
 
-                Log.d("AddAddressActivity", name);
-                Log.d("AddAddressActivity", num);
-                Log.d("AddAddressActivity", address);
+                if (name.equals("") || num.equals("") || address.equals("")) {
+                    Toast.makeText(this, "请填写信息", Toast.LENGTH_SHORT).show();
+                } else if (!name.equals("") && !num.equals("") && !address.equals("")) {
+                    Log.d("AddAddressActivity", name);
+                    Log.d("AddAddressActivity", num);
+                    Log.d("AddAddressActivity", address);
+                    Address addresses = new Address();
+                    addresses.setName(name);
+                    addresses.setNum(num);
+                    addresses.setAddress(address);
+                    addressDao.insert(addresses);
+                    finish();
+                    Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
+                }
 
-                Address addresses = new Address();
-                addresses.setName(name);
-                addresses.setNum(num);
-                addresses.setAddress(address);
-
-//                addressList.add(0, addresses);
-
-                addressDao.insert(addresses);
-
-                finish();
                 break;
         }
     }

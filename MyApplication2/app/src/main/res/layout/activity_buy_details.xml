@@ -51,8 +51,76 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:text="收件人"
+
+
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/buy_details_colon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/buy_details_receiver_tv"
+            android:layout_toRightOf="@id/buy_details_receiver_tv"
+            android:text=":"
+
+
+            android:visibility="gone" />
+
+        <!--<FrameLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <TextView
+            android:id="@+id/buy_details_receiver_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/buy_details_colon_tv"
             android:text="请添加收件人信息"
             android:textColor="#000000" />
+        <!--</FrameLayout>-->
+
+
+        <TextView
+            android:id="@+id/buy_details_address_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/buy_details_receiver_tv"
+            android:layout_below="@id/buy_details_receiver_tv"
+            android:layout_marginTop="10dp"
+            android:text="地址"
+
+
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/buy_details_colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/buy_details_address_tv"
+            android:layout_below="@id/buy_details_receiver_tv"
+            android:layout_toRightOf="@+id/buy_details_address_tv"
+            android:text=":"
+
+
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/buy_details_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/buy_details_address_tv"
+            android:layout_toRightOf="@id/buy_details_colon" />
+
+        <TextView
+            android:id="@+id/buy_details_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/buy_details_address_tv"
+            android:layout_below="@id/buy_details_address_tv"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/buy_details_add_address"

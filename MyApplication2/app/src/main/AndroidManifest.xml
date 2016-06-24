@@ -52,8 +52,7 @@
         <activity android:name=".controller.activity.BuyDetailsActivity" />
         <activity android:name=".controller.activity.MyAddressActivity" />
         <activity android:name=".controller.activity.AddAddressActivity" />
-
-
+        <activity android:name=".controller.activity.EditAddressActivity" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
