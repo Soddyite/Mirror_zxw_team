@@ -160,8 +160,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
                 //购买
 
 
-
-
                 Intent intentBuy = new Intent(this, BuyDetailsActivity.class);
                 startActivity(intentBuy);
 

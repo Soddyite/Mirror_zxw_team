@@ -25,6 +25,7 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.sharesdk.framework.Platform;
@@ -226,6 +227,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
             Log.d("SignUpActivity", response.getData().getUid());
             Log.d("SignUpActivity", response.getData().getToken());
+            List<Users> userses = usersDao.queryBuilder().list();
+            Log.d("SignUpActivity", "userses.size():" + userses.size());
         }
     }
 

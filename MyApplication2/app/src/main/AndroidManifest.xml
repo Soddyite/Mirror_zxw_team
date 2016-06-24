@@ -349,12 +349,14 @@
 
 
         <!--Mob-->
-=======
+
         <activity android:name=".controller.activity.BuyDetailsActivity" />
         <activity android:name=".controller.activity.MyAddressActivity" />
         <activity android:name=".controller.activity.AddAddressActivity" />
->>>>>>> 519b5fcbb581f6a7735d1c9ab03759ff7a829421
 
+
+
+        <activity android:name=".controller.activity.EditAddressActivity" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"

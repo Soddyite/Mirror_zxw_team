@@ -28,17 +28,24 @@ import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 
+import com.example.dllo.mirror.controller.activity.BaseActivity;
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
 
 import com.example.dllo.mirror.controller.activity.DetailsActivity;
 import com.example.dllo.mirror.controller.activity.TopicDetailsActivity;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
+import com.example.dllo.mirror.model.base.MyApplication;
+import com.example.dllo.mirror.model.db.Users;
+import com.example.dllo.mirror.model.db.UsersDao;
 import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
+import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 
 
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
+
+import java.util.List;
 
 
 /**
@@ -49,14 +56,13 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     private String title;
     private View titleLayout;
     private RecyclerView recyclerView;
-    private TextView oneTV, twoTV, threeTV, fourTV, fiveTV, toOneTV, titleTv,exitTv;
+    private TextView oneTV, twoTV, threeTV, fourTV, fiveTV, toOneTV, titleTv, exitTv;
     private ImageView shopCar;
     private PageFragmentAdapter pageFragmentAdapter;
     private HongXiangListener hongXiangListener;
     private PopupWindow pop;
     ScaleAnimation scaleAnimation;
-
-
+    UsersDao usersDao;
 
 
     @SuppressLint("ValidFragment")
@@ -71,11 +77,6 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
     public PageFragment() {
     }
-
-
-
-
-
 
 
     //构造方法需要传入一个titile,从而实现父用
@@ -175,7 +176,8 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
                 break;
             //退出
             case R.id.main_exit:
-                showDialog();
+
+                    showDialog();
                 pop.dismiss();
                 break;
 
@@ -184,16 +186,25 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getmContext());
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
         builder.setTitle("确定退出登录");
         builder.setNegativeButton("取消", null)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        usersDao = GreenDaoSingleton.getOurInstance().getUsersDao();
+                        usersDao.deleteAll();
+                        List<Users> userses = usersDao.queryBuilder().list();
+                        Log.d("PageFragment", "userses.size():" + userses.size());
+
+
+
                     }
                 })
                 .show();
+
     }
 
     /**
@@ -219,11 +230,11 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         pop.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
+
                 //无论如何标题都要隐藏
                 titleLayout.setVisibility(View.VISIBLE);
                 //我的购物车界面特殊,判断
                 if (!(title.equals("我的購物車"))) {
-
                     recyclerView.setVisibility(View.VISIBLE);
                 }
                 if (title.equals("我的購物車")) {
@@ -241,7 +252,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         fourTV = (TextView) view.findViewById(R.id.pop_four);
         fiveTV = (TextView) view.findViewById(R.id.pop_five);
         toOneTV = (TextView) view.findViewById(R.id.pop_toone);
-        exitTv =  (TextView) view.findViewById(R.id.main_exit);
+        exitTv = (TextView) view.findViewById(R.id.main_exit);
         oneTV.setOnClickListener(this);
         twoTV.setOnClickListener(this);
         threeTV.setOnClickListener(this);
@@ -269,7 +280,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
     }
 
-//接口
+    //接口
     public interface HongXiangListener {
         void change(int pos);
     }
