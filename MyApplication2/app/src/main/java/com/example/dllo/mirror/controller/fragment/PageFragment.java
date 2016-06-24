@@ -4,22 +4,27 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 
@@ -41,11 +46,10 @@ import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
  */
 
 public class PageFragment extends BaseFragment implements View.OnClickListener, PageItemClickListener {
-
     private String title;
     private View titleLayout;
     private RecyclerView recyclerView;
-    private TextView oneTV, twoTV, threeTV, fourTV, fiveTV, toOneTV, titleTv;
+    private TextView oneTV, twoTV, threeTV, fourTV, fiveTV, toOneTV, titleTv,exitTv;
     private ImageView shopCar;
     private PageFragmentAdapter pageFragmentAdapter;
     private HongXiangListener hongXiangListener;
@@ -55,19 +59,27 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
 
 
-
+    @SuppressLint("ValidFragment")
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         //子类引用父类对象
         hongXiangListener = (HongXiangListener) activity;
+
+
     }
 
     public PageFragment() {
     }
 
-    @SuppressLint("ValidFragment")
 
+
+
+
+
+
+    //构造方法需要传入一个titile,从而实现父用
+    @SuppressLint("ValidFragment")
     public PageFragment(String title) {
         this.title = title;
     }
@@ -131,34 +143,57 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
                         break;
                 }
                 break;
-
+            //瀏覽所有類型
             case R.id.pop_one:
                 hongXiangListener.change(0);
                 pop.dismiss();
                 break;
+            //瀏覽平光鏡
             case R.id.pop_two:
                 hongXiangListener.change(1);
                 pop.dismiss();
                 break;
+            //瀏覽太陽鏡
             case R.id.pop_three:
                 hongXiangListener.change(2);
                 pop.dismiss();
                 break;
+            //專題分享
             case R.id.pop_four:
                 hongXiangListener.change(3);
                 pop.dismiss();
                 break;
+            //我的購物車
             case R.id.pop_five:
                 hongXiangListener.change(4);
                 pop.dismiss();
                 break;
+            //返回首页
             case R.id.pop_toone:
                 hongXiangListener.change(0);
+                pop.dismiss();
+                break;
+            //退出
+            case R.id.main_exit:
+                showDialog();
                 pop.dismiss();
                 break;
 
 
         }
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getmContext());
+        builder.setTitle("确定退出登录");
+        builder.setNegativeButton("取消", null)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .show();
     }
 
     /**
@@ -206,12 +241,15 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         fourTV = (TextView) view.findViewById(R.id.pop_four);
         fiveTV = (TextView) view.findViewById(R.id.pop_five);
         toOneTV = (TextView) view.findViewById(R.id.pop_toone);
+        exitTv =  (TextView) view.findViewById(R.id.main_exit);
         oneTV.setOnClickListener(this);
         twoTV.setOnClickListener(this);
         threeTV.setOnClickListener(this);
         fourTV.setOnClickListener(this);
         fiveTV.setOnClickListener(this);
         toOneTV.setOnClickListener(this);
+        exitTv.setOnClickListener(this);
+
 
     }
 
