@@ -31,7 +31,6 @@ public class MyGreenDaoClass {
         entity.addStringProperty("uid");
         entity.addStringProperty("token");
 
-
         // 地址
         Entity entityAddress = schema.addEntity("Address");
         entityAddress.addIdProperty().autoincrement().autoincrement();

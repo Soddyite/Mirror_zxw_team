@@ -3,13 +3,13 @@ package com.example.dllo.mirror.controller.activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,17 +17,13 @@ import java.util.List;
  * 添加地址界面
  */
 public class AddAddressActivity extends BaseActivity implements View.OnClickListener {
-    // 定义
     private EditText inputName;
     private EditText inputNum;
     private EditText inputAddress;
-    // 输入的内容
     private String name;
     private String num;
     private String address;
     private AddressDao addressDao;
-
-    private List<Address> addressList;
 
     @Override
     protected int getLayout() {
@@ -49,8 +45,20 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
+
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
-        addressList = addressDao.queryBuilder().list();
+
+
+//        // 遍历数据库, 是否添加过
+//        List<Address> addressList = addressDao.queryBuilder().list();
+//        if (addressList.size() > 0){
+//            for (Address address : addressList) {
+//                if (address.getNum().toString().equals(num.toString())){
+//
+//                }
+//            }
+
+//        }
 
     }
 
@@ -61,25 +69,25 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.commit_address:
-
+                List<Address> addressList = new ArrayList<>();
                 name = inputName.getText().toString();
                 num = inputNum.getText().toString();
                 address = inputAddress.getText().toString();
 
-                if (name.equals("") || num.equals("") || address.equals("")) {
-                    Toast.makeText(this, "请填写信息", Toast.LENGTH_SHORT).show();
-                } else if (!name.equals("") && !num.equals("") && !address.equals("")) {
-                    Log.d("AddAddressActivity", name);
-                    Log.d("AddAddressActivity", num);
-                    Log.d("AddAddressActivity", address);
-                    Address addresses = new Address();
-                    addresses.setName(name);
-                    addresses.setNum(num);
-                    addresses.setAddress(address);
-                    addressDao.insert(addresses);
-                    finish();
-                    Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
-                }
+                Log.d("AddAddressActivity", name);
+                Log.d("AddAddressActivity", num);
+                Log.d("AddAddressActivity", address);
+
+                Address addresses = new Address();
+                addresses.setName(name);
+                addresses.setNum(num);
+                addresses.setAddress(address);
+
+//                addressList.add(0, addresses);
+
+                addressDao.insert(addresses);
+
+                finish();
                 break;
         }
     }

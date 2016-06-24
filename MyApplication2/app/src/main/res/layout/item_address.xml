@@ -1,100 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal">
+    android:layout_height="100dp">
 
-
-    <RelativeLayout
-        android:id="@+id/item_address_relativelayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/item_receiver_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:text="收件人"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/item_receiver_colon_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/item_receiver_tv"
-            android:layout_toRightOf="@id/item_receiver_tv"
-            android:text=":"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/item_receiver_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/item_receiver_tv"
-            android:layout_toRightOf="@id/item_receiver_colon_tv"
-            android:text="宇智波佐助"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/item_address_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/item_receiver_tv"
-            android:layout_below="@id/item_receiver_tv"
-            android:layout_marginTop="10dp"
-            android:text="地址"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/item_address_colon_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/item_address_tv"
-            android:layout_toRightOf="@id/item_address_tv"
-            android:text=":"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/item_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/item_address_tv"
-            android:layout_toRightOf="@id/item_address_colon_tv"
-            android:text="大连市数码广场"
-            android:textColor="#000000" />
-
-        <ImageView
-            android:id="@+id/item_edit_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@id/item_address"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_toRightOf="@id/item_address"
-            android:src="@mipmap/edit" />
-
-        <TextView
-            android:id="@+id/item_num_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/item_address_tv"
-            android:layout_below="@id/item_address_tv"
-            android:layout_marginTop="10dp"
-            android:text="1111111111111"
-            android:textColor="#000000" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/item_del_tv"
-        android:layout_width="80dp"
         android:layout_height="100dp"
-        android:layout_toRightOf="@id/item_address_relativelayout"
-        android:background="@android:color/holo_red_light"
-        android:gravity="center"
-        android:text="删除" />
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/item_address_relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <TextView
+                android:id="@+id/item_receiver_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="收件人"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/item_receiver_colon_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/item_receiver_tv"
+                android:layout_toRightOf="@id/item_receiver_tv"
+                android:text=":"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/item_receiver_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/item_receiver_tv"
+                android:layout_toRightOf="@id/item_receiver_colon_tv"
+                android:text="宇智波佐助"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/item_address_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/item_receiver_tv"
+                android:layout_below="@id/item_receiver_tv"
+                android:layout_marginTop="10dp"
+                android:text="地址"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/item_address_colon_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/item_address_tv"
+                android:layout_toRightOf="@id/item_address_tv"
+                android:text=":"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/item_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/item_address_tv"
+                android:layout_toRightOf="@id/item_address_colon_tv"
+                android:text="大连市数码广场"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/item_edit_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/item_address"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_toRightOf="@id/item_address"
+                android:src="@mipmap/edit" />
+
+            <TextView
+                android:id="@+id/item_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/item_address_tv"
+                android:layout_below="@id/item_address_tv"
+                android:layout_marginTop="10dp"
+                android:text="1111111111111"
+                android:textColor="#000000" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_del_tv"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:background="@android:color/holo_red_light"
+            android:gravity="center"
+            android:text="删除" />
+
+    </LinearLayout>
+</HorizontalScrollView>
