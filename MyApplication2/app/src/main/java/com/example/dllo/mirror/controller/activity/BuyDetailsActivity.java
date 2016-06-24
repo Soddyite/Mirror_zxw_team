@@ -6,12 +6,10 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
-
 import java.util.List;
 
 /**
