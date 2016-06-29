@@ -184,7 +184,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
                     showDialog();
 
-                }else {
+                } else {
 
                     Toast.makeText(MyApplication.getContext(), "还未登陆", Toast.LENGTH_SHORT).show();
                 }

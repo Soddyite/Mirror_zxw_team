@@ -40,14 +40,10 @@ import java.util.List;
  * Created by zouliangyu on 16/6/20.
  */
 public class BuyDetailsActivity extends BaseActivity implements View.OnClickListener {
-
-
     PopupWindow popupWindow;
     private FuQianLaPay pay;
     TextView addAdress;
     RelativeLayout relativeLayout;
-
-
 
     private TextView receiverTv; // 收件人
     private TextView colonOne;
@@ -57,13 +53,11 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private TextView address; // 地址
     private TextView numTv; // 电话号
 
-
     private AddressDao addressDao;
     private String name;
     private String address1;
     private String num;
     private List<Address> addressList;
-
 
     @Override
     protected int getLayout() {
@@ -85,9 +79,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         relativeLayout = bindView(R.id.buy_details_relativelayout);
         relativeLayout.setOnClickListener(this);
 
-
-
-
         receiverTv = (TextView) findViewById(R.id.buy_details_receiver_tv);
         colonOne = (TextView) findViewById(R.id.buy_details_colon_tv);
         nameTv = (TextView) findViewById(R.id.buy_details_receiver_name_tv);
@@ -96,7 +87,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         address = (TextView) findViewById(R.id.buy_details_address);
 
         numTv = (TextView) findViewById(R.id.buy_details_num_tv);
-
 
     }
 
@@ -151,7 +141,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                     popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
                 }
 
-
                 break;
             case R.id.buy_details_relativelayout:
                 if (popupWindow.isShowing()) {
@@ -194,7 +183,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
 
         addressList = addressDao.queryBuilder().list();
-
 
         if (addressList.size() == 1) {
             Log.d("BuyDetailsActivity521", addressList.get(0).getName());
@@ -259,7 +247,5 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
         numTv.setTextColor(Color.BLACK);
     }
-
-
 
 }

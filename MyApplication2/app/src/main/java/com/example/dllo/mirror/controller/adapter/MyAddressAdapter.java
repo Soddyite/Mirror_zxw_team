@@ -86,7 +86,6 @@ public class MyAddressAdapter extends BaseAdapter {
 
         viewHolder.relativeLayout.setMinimumWidth(ScreenUtils.getScreenWidth(context));
         // 编辑
-
         viewHolder.editIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

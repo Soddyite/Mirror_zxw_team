@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/back_ground_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
@@ -13,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.dllo.mirror.view.RelationListView
+        <ListView
             android:id="@+id/lv1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +25,7 @@
         <!-- android:listSelector="@android:color/transparent"
         listview点击没有效果, 空白-->
 
-        <com.example.dllo.mirror.view.RelationListView
+        <com.example.dllo.mirror.view.NoScrollListView
             android:id="@+id/lv2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

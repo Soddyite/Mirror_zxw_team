@@ -39,7 +39,6 @@ import cn.sharesdk.wechat.friends.Wechat;
  * Created by dllo on 16/6/13.
  */
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
-
     private Button creatUserButton, signupBtn;
     private ImageView sinaIv, weixinIv;
     private EditText phoneEt, passwordEt;
@@ -50,7 +49,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private Gson gson;
     OkHttpClientManager clientManager;
 
-
     @Override
     protected int getLayout() {
         return R.layout.activity_signup;
@@ -58,10 +56,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initView() {
-
         platform = null;
         ShareSDK.initSDK(this);
-
 
         client = new OkHttpClient();
         closeIv = bindView(R.id.signup_close_iv);
@@ -122,12 +118,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     }
                 }, map);
 
-
 //                //请求体
 //                FormEncodingBuilder builder1 = new FormEncodingBuilder();
 //                builder1.add("phone_number", phoneEt.getText().toString());
 //                builder1.add("password", passwordEt.getText().toString());
-//
 //
 //                //创建请求体
 //                RequestBody body1 = builder1.build();
@@ -153,10 +147,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 //                    }
 //                });
 
-
                 break;
-
-
             case R.id.signup_sina_signup:
 
                 Log.d("SignUpActivity", "sina");
@@ -173,10 +164,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
                 break;
 
-
         }
     }
-
 
     private void signUpOther(String name) {
 
@@ -186,7 +175,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         platform.setPlatformActionListener(new PlatformActionListener() {
             @Override
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-
 
                 Log.d("SignUpActivity", "success");
                 Log.d("SignUpActivity", platform.getDb().getUserId());
@@ -212,11 +200,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 //        platform.showUser(null);//获取接口的回调,成功的话可以得到用户信息
         platform.authorize();
 
-
     }
 
     private void addDb(UserBean response) {
-
 
         if (!response.equals("")) {
 

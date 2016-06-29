@@ -30,8 +30,6 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
     private List<Address> addressList;
     private int pos;
 
-
-
     @Override
     protected int getLayout() {
         return R.layout.activity_my_address;
@@ -71,8 +69,6 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
         });
 
 
-
-
     }
 
     @Override
@@ -109,7 +105,6 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
             myAddressAdapter.setAddressList(addressList);
             listView.setAdapter(myAddressAdapter);
         }
-
 
 
     }

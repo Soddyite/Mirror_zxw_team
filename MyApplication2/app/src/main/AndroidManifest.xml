@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dllo.mirror">
 
-
-
     <!-- 公用权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -73,10 +71,11 @@
         <activity android:name=".controller.activity.SignUpActivity" />
 
         <activity android:name=".controller.activity.DetailsActivity" />
-        <activity android:name=".controller.activity.DressResultActivity" />
+        <activity android:name=".controller.activity.DressResultActivity"
+            android:configChanges="orientation|screenSize|screenLayout"/>
+
         <activity android:name=".controller.activity.RegisterActivity" />
         <activity android:name=".controller.activity.TopicDetailsActivity" />
-
 
 
         <!--zhifu-->
@@ -167,7 +166,7 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:screenOrientation="portrait"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.baidu.paysdk.ui.PwdCheckActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -175,14 +174,14 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:screenOrientation="portrait"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateVisible"/>
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name="com.baidu.paysdk.ui.PwdSetAndConfirmActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
             android:excludeFromRecents="true"
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateVisible"/>
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name="com.baidu.paysdk.ui.PwdPayActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -198,7 +197,7 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:screenOrientation="portrait"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.baidu.paysdk.ui.SelectBindCardActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -238,7 +237,7 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:screenOrientation="portrait"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name="com.baidu.wallet.core.plugins.pluginproxy.WalletProxyActivity2"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -262,7 +261,7 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:hardwareAccelerated="false"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.baidu.paysdk.ui.ConfirmPayOrderActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -277,7 +276,7 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:screenOrientation="portrait"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.baidu.paysdk.ui.SelectPayWayActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -294,7 +293,7 @@
             android:exported="@bool/bd_wallet_switch_global_debug"
             android:screenOrientation="portrait"
             android:theme="@style/EbpayThemeActivit"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.baidu.paysdk.ui.BindCardImplActivity"
             android:configChanges="keyboardHidden|navigation|orientation|screenSize"
@@ -346,14 +345,11 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
 
-
-
         <!--Mob-->
 
         <activity android:name=".controller.activity.BuyDetailsActivity" />
         <activity android:name=".controller.activity.MyAddressActivity" />
         <activity android:name=".controller.activity.AddAddressActivity" />
-
 
 
         <activity android:name=".controller.activity.EditAddressActivity" />
@@ -387,6 +383,8 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <meta-data android:name="design_width" android:value="768"/>
+        <meta-data android:name="design_height" android:value="1280"/>
 
 
     </application>

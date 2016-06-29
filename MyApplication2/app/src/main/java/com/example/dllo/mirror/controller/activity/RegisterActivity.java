@@ -33,7 +33,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     EditText phoneEt, smsCodeEt, passwordEt;
     ImageView closeIv;
 
-
     @Override
     protected int getLayout() {
         return R.layout.activity_register;
@@ -42,14 +41,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initView() {
 
-
         sendCodeBtn = bindView(R.id.register_send_code_btn);
         createUserBtn = bindView(R.id.register_create_user_btn);
         phoneEt = bindView(R.id.register_user_phonenumber);
         smsCodeEt = bindView(R.id.register_sms_code);
         passwordEt = bindView(R.id.register_user_password);
         closeIv = bindView(R.id.register_close_iv);
-
 
     }
 
@@ -61,7 +58,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         sendCodeBtn.setOnClickListener(this);
         createUserBtn.setOnClickListener(this);
         closeIv.setOnClickListener(this);
-
 
     }
 
@@ -75,7 +71,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             case R.id.register_send_code_btn:
 
                 String postUrl = "http://api101.test.mirroreye.cn/index.php/user/send_code";
-
 
                 Map<String, String> maps = new HashMap<>();
                 maps.put("phone number", phoneEt.getText().toString());
@@ -91,7 +86,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                     }
                 }, maps);
-
 
 //                //请求体
 //                FormEncodingBuilder builder = new FormEncodingBuilder();
@@ -117,7 +111,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //                    }
 //                });
 
-
                 break;
 
             case R.id.register_create_user_btn:
@@ -141,7 +134,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         Log.d("RegisterActivity", "注册成功");
 
                     }
-                },map);
+                }, map);
 
 //                //请求体
 //                FormEncodingBuilder builder1 = new FormEncodingBuilder();
@@ -172,8 +165,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //                });
 
                 finish();
-
-
                 break;
         }
 

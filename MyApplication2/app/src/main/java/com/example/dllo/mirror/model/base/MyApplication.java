@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.model.base;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
@@ -13,6 +14,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zouliangyu on 16/6/13.
@@ -23,6 +26,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         context = getApplicationContext();
         ImageLoaderConfiguration imageLoaderConfiguration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(imageLoaderConfiguration);
