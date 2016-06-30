@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY" />
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -19,8 +19,8 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="640px"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="200px"
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40px"
-                android:layout_marginTop="30px"
+                android:layout_marginTop="42px"
                 android:text="霸道女总裁的完美穿搭"
                 android:textColor="#ffffff" />
 
@@ -41,10 +41,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/text_tv"
                 android:layout_below="@id/text_tv"
-                android:layout_marginTop="10px"
+                android:layout_marginTop="22px"
                 android:text="温润大气的出街装扮"
                 android:textColor="#ffffff"
-                android:textSize="40px" />
+                android:textSize="34px" />
 
             <TextView
                 android:id="@+id/desc_tv"
@@ -53,11 +53,12 @@
                 android:layout_alignLeft="@id/title_tv"
                 android:layout_below="@id/title_tv"
                 android:layout_marginRight="150px"
-                android:layout_marginTop="10px"
+                android:layout_marginTop="22px"
+                android:paddingBottom="40px"
                 android:text="案发发哈发嘎嘎噶是否还哦啊舒"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:textSize="23px" />
 
-        </RelativeLayout>
-
-    </LinearLayout>
-</FrameLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoFrameLayout>

@@ -2,12 +2,14 @@ package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
 
+import android.graphics.Bitmap;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -21,7 +23,6 @@ import android.view.View;
 import android.widget.TextView;
 
 
-
 import com.ease.paysdk.FuQianLa;
 import com.ease.paysdk.FuQianLaPay;
 import com.ease.paysdk.bean.FuQianLaResult;
@@ -33,6 +34,9 @@ import com.example.dllo.mirror.model.utils.OrderUtils;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import java.util.List;
 
 
@@ -58,6 +62,14 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private String address1;
     private String num;
     private List<Address> addressList;
+
+    private ImageView imageView;
+    private TextView titleTv;
+    private TextView moneyTv;
+    private DisplayImageOptions options;
+    private String imgUrl;
+    private String name1;
+    private String money;
 
     @Override
     protected int getLayout() {
@@ -87,10 +99,29 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         address = (TextView) findViewById(R.id.buy_details_address);
         numTv = (TextView) findViewById(R.id.buy_details_num_tv);
 
+        imageView = (ImageView) findViewById(R.id.buy_details_glass_iv);
+        titleTv = (TextView) findViewById(R.id.buy_details_title_tv);
+        moneyTv = (TextView) findViewById(R.id.buy_details_money_tv);
+
     }
 
     @Override
     protected void initData() {
+        Intent intent = getIntent();
+        imgUrl = intent.getStringExtra("img");
+        name1 = intent.getStringExtra("name");
+        money = intent.getStringExtra("money");
+        options = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)//设置下载的图片是否缓存在内存中
+                .cacheOnDisk(true)//设置下载的图片是否缓存在SD卡中
+                .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
+                .build();//构建完成
+
+
+        ImageLoader.getInstance().displayImage(imgUrl, imageView, options);
+        titleTv.setText(name1);
+        moneyTv.setText(money);
+
 
         initPopup();
 
