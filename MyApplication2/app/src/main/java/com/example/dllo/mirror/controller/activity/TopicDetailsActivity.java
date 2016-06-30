@@ -114,10 +114,8 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
         // viewpager滑动监听
         verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
 
             }
 
