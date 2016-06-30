@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.fragment.PageFragment;
-import com.example.dllo.mirror.model.bean.UserBean;
 import com.example.dllo.mirror.model.db.Users;
 import com.example.dllo.mirror.model.db.UsersDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
@@ -30,7 +29,7 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
     UsersDao usersDao;
     private List<Users> userBeanList;
     ImageView main_mirror;
-
+    private final static String fileName = "meiruo.json";
 
     @Override
     protected int getLayout() {
@@ -57,8 +56,7 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
     }
 
 
-
-    public void initTextView(){
+    public void initTextView() {
 
         usersDao = GreenDaoSingleton.getOurInstance().getUsersDao();
         userBeanList = usersDao.queryBuilder().list();
@@ -111,12 +109,8 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
     }
 
 
-
     @Override
     protected void initData() {
-
-
-
         main_mirror.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +118,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
                 Log.d("MainActivity", "userBeanList.size():" + userBeanList.size());
             }
         });
-
 
 
         fragmentList = new ArrayList<>();
@@ -137,11 +130,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
         mainAdapter.setFragmentList(fragmentList);
         verticalViewPager.setAdapter(mainAdapter);
 
-
-
-
-
-
     }
 
     //回掉的接口
@@ -152,5 +140,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
 
 
     }
+
 
 }

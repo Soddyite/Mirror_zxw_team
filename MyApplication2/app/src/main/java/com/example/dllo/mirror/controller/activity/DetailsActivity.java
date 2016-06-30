@@ -2,6 +2,7 @@ package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.dllo.mirror.controller.adapter.BottomListViewAdapter;
 import com.example.dllo.mirror.controller.adapter.TopListViewAdapter;
 import com.example.dllo.mirror.model.base.MyApplication;
 import com.example.dllo.mirror.model.bean.AllBean;
+import com.example.dllo.mirror.model.bean.GoodsDetails;
 import com.example.dllo.mirror.model.bean.MyData;
 import com.example.dllo.mirror.model.bean.MyDataTwo;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
@@ -71,6 +73,9 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private ImageView nullImage;
     private ImageView backGroundIv;
     private AllBean allBean;
+    private GoodsDetails goodsDetails;
+    private List<GoodsDetails.DataBean.ListBean> list;
+    private int pos;
 
     @Override
     protected int getLayout() {
@@ -96,13 +101,17 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initData() {
+        //获取所有数据
         String result = readFile("mirror_data.txt");
         Gson gson = new Gson();
         allBean = gson.fromJson(result, AllBean.class);
-        Log.d("521", "allBean.getData().getList().size():" + allBean.getData().getList().size());
-        ImageLoader.getInstance().displayImage(allBean.getData().getList().get(0).getData_info().getGoods_img(),
+
+        Intent intent = getIntent();
+        pos = intent.getIntExtra("pos", 0);
+        list = (List<GoodsDetails.DataBean.ListBean>) intent.getSerializableExtra("bundle1");
+
+        ImageLoader.getInstance().displayImage(list.get(pos).getData_info().getGoods_img(),
                 backGroundIv, options);
-        Log.d("DetailsActivity", allBean.getData().getList().get(0).getData_info().getGoods_img());
 
         // 退出  佩戴图集  购买
         exitIv.setOnClickListener(this);
@@ -118,11 +127,14 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         addView();
 
         bottomListViewAdapter = new BottomListViewAdapter(this);
-        myDatas = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            myDatas.add(new MyData(R.mipmap.glass));
-        }
-        bottomListViewAdapter.setMyDatas(myDatas);
+
+
+//        myDatas = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            myDatas.add(new MyData(R.mipmap.glass));
+//        }
+
+        bottomListViewAdapter.setList(list.get(pos).getData_info().getDesign_des());
         listViewBottom.setAdapter(bottomListViewAdapter);
         // 滚动条  不活动的时候隐藏，活动的时候也隐藏
         listViewBottom.setVerticalScrollBarEnabled(true);
@@ -170,12 +182,15 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         });
 
         topListViewAdapter = new TopListViewAdapter(this);
-        myDataTwos = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            myDataTwos.add(new MyDataTwo("SEE CONCEPT", "对方公司规定非活动法啊啊啊啊啊啊啊啊啊啊啊啊啊"));
-        }
+        Log.d("list", "list.get(pos).getData_info().getGoods_data().size():"
+                + list.get(pos).getData_info().getGoods_data().size());
 
-        topListViewAdapter.setMyDatasTwo(myDataTwos);
+//        myDataTwos = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            myDataTwos.add(new MyDataTwo("SEE CONCEPT", "对方公司规定非活动法啊啊啊啊啊啊啊啊啊啊啊啊啊"));
+//        }
+
+        topListViewAdapter.setList(list.get(pos).getData_info().getGoods_data());
         listViewTop.setAdapter(topListViewAdapter);
         // 滚动条  不活动的时候隐藏，活动的时候也隐藏
         listViewTop.setVerticalScrollBarEnabled(true);
@@ -218,17 +233,23 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         int height = ScreenUtils.getScreenHeight(MyApplication.getContext());
         int width = ScreenUtils.getScreenWidth(MyApplication.getContext());
 
+        // 下层的listview
         // 第一个头布局, 产品介绍那个
         View viewFirst = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.header_first, null);
-
         viewFirst.setMinimumHeight(height);
         viewFirst.setMinimumWidth(width);
-
+        // 空的头布局
         AutoFrameLayout autoFrameLayout = (AutoFrameLayout) viewFirst.findViewById(R.id.head_first_null);
         autoFrameLayout.setMinimumHeight(height);
-
+        TextView nameTv = (TextView) viewFirst.findViewById(R.id.head_first_goods_name);
+        nameTv.setText(list.get(pos).getData_info().getGoods_name());
+        TextView brandTv = (TextView) viewFirst.findViewById(R.id.header_first_brand);
+        brandTv.setText(list.get(pos).getData_info().getBrand());
         contentTv = (TextView) viewFirst.findViewById(R.id.header_first_content_tv);
-        contentTv.setText(allBean.getData().getList().get(0).getData_info().getInfo_des());
+        contentTv.setText(list.get(pos).getData_info().getInfo_des());
+        TextView priceTv = (TextView) viewFirst.findViewById(R.id.head_first_goods_price);
+        priceTv.setText(list.get(pos).getData_info().getGoods_price());
+        // 分享
         shareIv = (ImageView) viewFirst.findViewById(R.id.share);
         shareIv.setOnClickListener(this);
         listViewBottom.addHeaderView(viewFirst);
@@ -242,29 +263,14 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         // 标题 头布局
         // 例如: 手工复古眼镜
         View viewThird = LayoutInflater.from(this).inflate(R.layout.header_second, null);
+        TextView nameTv1 = (TextView) viewThird.findViewById(R.id.head_second_name_tv);
+        nameTv1.setText(list.get(pos).getData_info().getBrand());
         viewThird.setMinimumHeight(height / 10);
         viewThird.setMinimumWidth(width);
         listViewBottom.addHeaderView(viewThird);
 
-        // 第一个FooterView
-        View footerViewFirst = LayoutInflater.from(this).inflate(R.layout.footer_first, null);
-        footerViewFirst.setMinimumHeight(height);
-        footerViewFirst.setMinimumWidth(width);
-        footerFirst = (ImageView) footerViewFirst.findViewById(R.id.footer_first_iv);
-        ImageLoader.getInstance().displayImage("http://image.mirroreye.cn/chicunbf9e59473fa94566740337693a57d92b.jpg",
-                footerFirst, options);
-
-        listViewBottom.addFooterView(footerViewFirst);
-
-        // 第二个FooterView
-        View footerViewSecond = LayoutInflater.from(this).inflate(R.layout.footer_second, null);
-        footerViewSecond.setMinimumHeight(height);
-        footerViewSecond.setMinimumWidth(width);
-        footerSecond = (ImageView) footerViewSecond.findViewById(R.id.footer_second_iv);
-        listViewBottom.addFooterView(footerViewSecond);
 
         // 上层listview
-
         // 一整页空的头布局
         View viewSecond1 = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.header_third, null);
         nullImage = (ImageView) viewSecond1.findViewById(R.id.null_imageview);
@@ -273,10 +279,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         listViewTop.addHeaderView(viewSecond1);
         viewSecond1.setAlpha(0f);
 
-        View footerView = LayoutInflater.from(this).inflate(R.layout.header_third, null);
-        footerView.setMinimumHeight(height * 2);
-        footerView.setMinimumWidth(width);
-        listViewTop.addFooterView(footerView);
     }
 
     private void showShare() {

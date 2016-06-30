@@ -23,11 +23,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/share"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="60px"
+            android:layout_marginRight="60px"
             android:layout_marginTop="194px"
             android:background="@mipmap/frame"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/head_first_goods_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -46,42 +49,15 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/white" />
 
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/header_first_brand"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/header_first_name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
-                    android:text="女款"
-                    android:textColor="#ffffff"
-                    android:textSize="36px" />
-
-                <View
-                    android:id="@+id/white_vertical_line"
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/header_first_name_tv"
-                    android:layout_alignTop="@id/header_first_name_tv"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/header_first_name_tv"
-                    android:background="#ffffff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/header_first_name_tv"
-                    android:layout_alignTop="@id/header_first_name_tv"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/white_vertical_line"
-                    android:text="晶粉猫眼太阳镜"
-                    android:textColor="#ffffff"
-                    android:textSize="36px" />
-
-            </com.zhy.autolayout.AutoRelativeLayout>
+                android:layout_gravity="center"
+                android:layout_marginTop="20px"
+                android:text="女款|太阳镜"
+                android:textColor="#ffffff"
+                android:textSize="36px" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -98,14 +74,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:maxLines="10"
+                android:layout_marginTop="42px"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="11111111111111111111111"
                 android:textColor="#ffffff" />
 
             <TextView
+                android:id="@+id/head_first_goods_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="60px"
+                android:layout_marginBottom="60px"
                 android:drawableLeft="@mipmap/money"
                 android:text="998"
                 android:textColor="#ffffff"

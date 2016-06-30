@@ -10,7 +10,7 @@
         android:layout_weight="1" />
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="640px"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="50dp"
@@ -29,19 +29,48 @@
             android:src="@mipmap/white" />
 
         <TextView
-            android:id="@+id/title_tv"
+            android:id="@+id/item_top_listview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/white_line_one"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15px"
-            android:text="SEE CONCEPT" />
+            android:textSize="60px" />
+
+        <TextView
+            android:id="@+id/item_top_listview_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/white_line_one"
+            android:layout_marginTop="15px"
+            android:paddingRight="50px"
+            android:text="韩国"
+            android:textSize="60px" />
+
+        <TextView
+            android:id="@+id/item_top_listview_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_top_listview_country"
+            android:layout_marginRight="15px"
+            android:layout_toLeftOf="@id/item_top_listview_country"
+            android:text="来自韩国" />
+
+        <TextView
+            android:id="@+id/item_top_listview_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_top_listview_location"
+            android:layout_marginRight="15px"
+            android:layout_toLeftOf="@id/item_top_listview_country"
+            android:text="English" />
 
         <ImageView
             android:id="@+id/white_line_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/title_tv"
+            android:layout_below="@id/item_top_listview_country"
             android:layout_marginTop="15px"
             android:paddingLeft="50px"
             android:paddingRight="50px"
@@ -49,11 +78,12 @@
             android:src="@mipmap/white" />
 
         <TextView
-            android:id="@+id/details_tv"
+            android:id="@+id/item_top_listview_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/white_line_two"
             android:layout_below="@id/white_line_two"
+            android:layout_marginBottom="15px"
             android:layout_marginTop="15px"
             android:paddingLeft="50px"
             android:paddingRight="50px"

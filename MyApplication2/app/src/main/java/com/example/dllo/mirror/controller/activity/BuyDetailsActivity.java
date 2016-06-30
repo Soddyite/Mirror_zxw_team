@@ -85,7 +85,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         addressTv = (TextView) findViewById(R.id.buy_details_address_tv);
         colonTwo = (TextView) findViewById(R.id.buy_details_colon);
         address = (TextView) findViewById(R.id.buy_details_address);
-
         numTv = (TextView) findViewById(R.id.buy_details_num_tv);
 
     }

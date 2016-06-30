@@ -13,32 +13,13 @@
         android:src="@mipmap/black_horizontal" />
 
     <TextView
-        android:id="@+id/type_tv"
+        android:id="@+id/head_second_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/iv"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:text="女款"
+        android:text="女 | 太阳镜"
         android:textColor="#000000" />
 
-    <View
-        android:id="@+id/vertical_white_line"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/type_tv"
-        android:layout_alignTop="@id/type_tv"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/type_tv"
-        android:background="#000000" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/type_tv"
-        android:layout_alignTop="@id/type_tv"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/vertical_white_line"
-        android:text="晶粉猫眼太阳镜"
-        android:textColor="#000000" />
 </RelativeLayout>

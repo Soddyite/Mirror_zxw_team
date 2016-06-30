@@ -1833,7 +1833,7 @@ public class VerticalViewPager extends ViewGroup {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         if (mFakeDragging) {
-            // A fake drag is in progress already, ignore this real one
+            //  fake drag is in progress already, ignore this real one
             // but still eat the touch events.
             // (It is likely that the user is multi-touching the screen.)
             return true;
@@ -2160,7 +2160,7 @@ public class VerticalViewPager extends ViewGroup {
      * Start a fake drag of the pager.
      * <p/>
      * <p>
-     * A fake drag can be useful if you want to synchronize the motion of the
+     *  fake drag can be useful if you want to synchronize the motion of the
      * ViewPager with the touch scrolling of another view, while still letting
      * the ViewPager control the snapping motion and fling behavior. (e.g.
      * parallax-scrolling tabs.) Call {@link #fakeDragBy(float)} to simulate the

@@ -1,5 +1,7 @@
 package com.example.dllo.mirror.controller.activity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,10 +18,13 @@ import com.android.volley.toolbox.Volley;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.TopicDetailsAdapter;
 import com.example.dllo.mirror.model.base.MyApplication;
+import com.example.dllo.mirror.model.bean.GoodsDetails;
 import com.example.dllo.mirror.model.bean.TopicDetailsData;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
 import com.example.dllo.mirror.view.VerticalViewPager;
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.squareup.okhttp.Request;
 
 import java.util.ArrayList;
@@ -49,6 +54,11 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
     private ImageView bottomIv;
     // 假数据(图片)
     private int[] image = {R.mipmap.piao1, R.mipmap.piao2, R.mipmap.piao3, R.mipmap.piao4, R.mipmap.piao5};
+    private int pos;
+    private List<GoodsDetails.DataBean.ListBean> list;
+
+    private DisplayImageOptions options;
+    private String imgUrl;
 
     @Override
     protected int getLayout() {
@@ -64,72 +74,130 @@ public class TopicDetailsActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void initData() {
+        Intent intent = getIntent();
+        pos = intent.getIntExtra("pos", 0);
+        list = (List<GoodsDetails.DataBean.ListBean>) intent.getSerializableExtra("bundle1");
 
+
+        options = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)//设置下载的图片是否缓存在内存中
+                .cacheOnDisk(true)//设置下载的图片是否缓存在SD卡中
+                .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
+                .build();//构建完成
+
+        ImageLoader.getInstance().displayImage(list.get(pos).getData_info().getStory_data().getImg_array().get(0),
+                bottomIv, options);
 
         // 退出
         bindView(R.id.exit_iv).setOnClickListener(this);
         // 分享
         bindView(R.id.share_iv).setOnClickListener(this);
 
+        // 加载的view的集合
+        List<View> views = new ArrayList<>();
+        // 数据页数 topicDetailsData.getData().size()
+        for (int i = 0; i < list.get(pos).getData_info().getStory_data().getText_array().size(); i++) {
+            // 同一个view
+            View view = LayoutInflater.from(MyApplication.getContext()).inflate(
+                    R.layout.activity_topic_details_viewpager, null);
+            textView = (TextView) view.findViewById(R.id.text_tv);
+            titleTv = (TextView) view.findViewById(R.id.title_tv);
+            descTc = (TextView) view.findViewById(R.id.desc_tv);
+            textView.setText(list.get(pos).getData_info().getStory_data().getText_array().get(i).getSmallTitle());
+            titleTv.setText(list.get(pos).getData_info().getStory_data().getText_array().get(i).getTitle());
+            descTc.setText(list.get(pos).getData_info().getStory_data().getText_array().get(i).getSubTitle());
+            views.add(view);
+        }
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("token", "");
-        params.put("device_type", "1");
-
-//        OkHttpClientManager.post()
-
-        OkHttpClientManager.postAsyn("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=10179&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755014&p_=17387&v_=40050303&d_=ios&osv_=8.3&version=1&a_=lol",
-                new OkHttpClientManager.ResultCallback<TopicDetailsData>() {
-                    @Override
-                    public void onError(Request request, Exception e) {
-                    }
-
-                    @Override
-                    public void onResponse(TopicDetailsData response) {
-
-                        topicDetailsData = response;
-                        // 加载的view的集合
-                        List<View> views = new ArrayList<>();
-                        // 数据页数  5应该是   topicDetailsData.getData().size()
-                        for (int i = 0; i < 5; i++) {
-                            // 同一个view
-                            View view = LayoutInflater.from(MyApplication.getContext()).inflate(
-                                    R.layout.activity_topic_details_viewpager, null);
-                            textView = (TextView) view.findViewById(R.id.text_tv);
-                            titleTv = (TextView) view.findViewById(R.id.title_tv);
-                            descTc = (TextView) view.findViewById(R.id.desc_tv);
-                            textView.setText(topicDetailsData.getData().get(i).getId());
-                            titleTv.setText(topicDetailsData.getData().get(i).getTitle());
-                            descTc.setText(topicDetailsData.getData().get(i).getDesc());
-                            views.add(view);
-                        }
-
-                        topicDetailsAdapter = new TopicDetailsAdapter(views);
-                        verticalViewPager.setAdapter(topicDetailsAdapter);
-                        // viewpager滑动监听
-                        verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        topicDetailsAdapter = new TopicDetailsAdapter(views);
+        verticalViewPager.setAdapter(topicDetailsAdapter);
+        // viewpager滑动监听
+        verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 
-                            @Override
-                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
 
-                            }
+            }
 
-                            @Override
-                            public void onPageSelected(int position) {
-                                bottomIv.setImageResource(image[position]);
-                            }
+            @Override
+            public void onPageSelected(int position) {
+//                                bottomIv.setImageResource(image[position]);
+                imgUrl = String.valueOf(list.get(pos).getData_info().getStory_data()
+                        .getImg_array().get(position));
 
-                            @Override
-                            public void onPageScrollStateChanged(int state) {
+                ImageLoader.getInstance().displayImage(imgUrl, bottomIv, options);
 
+            }
 
-                            }
-                        });
-                    }
-                }, params);
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("token", "");
+//        params.put("device_type", "1");
+//
+////        OkHttpClientManager.post()
+//
+//        OkHttpClientManager.postAsyn("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=10179&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755014&p_=17387&v_=40050303&d_=ios&osv_=8.3&version=1&a_=lol",
+//                new OkHttpClientManager.ResultCallback<TopicDetailsData>() {
+//                    @Override
+//                    public void onError(Request request, Exception e) {
+//                    }
+//
+//                    @Override
+//                    public void onResponse(TopicDetailsData response) {
+//
+//                        topicDetailsData = response;
+//                        // 加载的view的集合
+//                        List<View> views = new ArrayList<>();
+//                        // 数据页数  5应该是   topicDetailsData.getData().size()
+//                        for (int i = 0; i < 5; i++) {
+//                            // 同一个view
+//                            View view = LayoutInflater.from(MyApplication.getContext()).inflate(
+//                                    R.layout.activity_topic_details_viewpager, null);
+//                            textView = (TextView) view.findViewById(R.id.text_tv);
+//                            titleTv = (TextView) view.findViewById(R.id.title_tv);
+//                            descTc = (TextView) view.findViewById(R.id.desc_tv);
+//                            textView.setText(topicDetailsData.getData().get(i).getId());
+//                            titleTv.setText(topicDetailsData.getData().get(i).getTitle());
+//                            descTc.setText(topicDetailsData.getData().get(i).getDesc());
+//                            views.add(view);
+//                        }
+//
+//                        topicDetailsAdapter = new TopicDetailsAdapter(views);
+//                        verticalViewPager.setAdapter(topicDetailsAdapter);
+//                        // viewpager滑动监听
+//                        verticalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//
+//
+//                            @Override
+//                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//
+//                            }
+//
+//                            @Override
+//                            public void onPageSelected(int position) {
+////                                bottomIv.setImageResource(image[position]);
+//                                imgUrl = String.valueOf(list.get(pos).getData_info().getStory_data()
+//                                        .getImg_array().get(position));
+//
+//                                ImageLoader.getInstance().displayImage(imgUrl, bottomIv, options);
+//
+//                            }
+//
+//                            @Override
+//                            public void onPageScrollStateChanged(int state) {
+//
+//                            }
+//                        });
+//                    }
+//                }, params);
 
 //        RequestQueue requestQueue = Volley.newRequestQueue(TopicDetailsActivity.this);
 //        StringRequest request = new StringRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=10179&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755014&p_=17387&v_=40050303&d_=ios&osv_=8.3&version=1&a_=lol",
