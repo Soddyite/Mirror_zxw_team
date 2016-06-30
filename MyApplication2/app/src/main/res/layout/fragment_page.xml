@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg">
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/pagefragment_titlelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="22px"
         android:layout_marginTop="30px">
+
 
         <TextView
             android:id="@+id/pagefragment_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20px"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="28px"
             android:text="瀏覽所有分類"
             android:textColor="#FFFFFF"
             android:textSize="40px" />
@@ -45,23 +47,25 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/pagefragment_title"
             android:layout_below="@+id/line"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="26px"
             android:text="顯示順序為 最新推薦"
             android:textColor="#FFFFFF"
             android:textSize="30px" />
-    </RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pagefragment_titlelayout"
         android:layout_marginTop="30px"
+
         android:scrollbars="none">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/pagefragment_recycleView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="94px" />
     </HorizontalScrollView>
 
 
@@ -72,4 +76,4 @@
         android:layout_centerInParent="true"
         android:src="@mipmap/shoppingcar"
         android:visibility="gone" />
-</RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

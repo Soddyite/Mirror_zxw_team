@@ -1,76 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="936px">
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="450px"
-        android:layout_height="800px"
-        android:layout_marginLeft="15px"
+        android:layout_width="540px"
+        android:layout_height="936px"
+        android:layout_marginLeft="22px"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher" />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="250px"
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/item_show_layout"
+        android:layout_width="540px"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/item_image"
         android:layout_alignLeft="@+id/item_image"
-        android:layout_alignRight="@+id/item_image"
-        android:background="#ffffff">
+        android:layout_alignRight="@+id/item_image">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical"
-            android:padding="20px">
+            android:layout_height="238px"
+            android:layout_alignBottom="@+id/item_image"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/item_type2"
                 android:layout_width="match_parent"
-                android:layout_height="0px"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:layout_marginRight="32px"
+                android:background="#ffffff"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/item_goods_name"
-                    android:layout_width="0px"
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="GRAFIK:PLASTIC"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="32px"
+                    android:layout_marginTop="50px"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/item_goods_name"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="GRAFIK:PLASTIC"
+                        android:textSize="30px"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/item_glass_goods_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥1800"
+                        android:textSize="30px"
+                        android:textStyle="bold" />
+
+                </com.zhy.autolayout.AutoLinearLayout>
 
                 <TextView
-                    android:id="@+id/item_glass_goods_price"
+                    android:id="@+id/item_glass_product_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¥1800"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="16px"
+                    android:text="韓國首爾"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoLinearLayout>
 
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/item_glass_product_area"
-                android:layout_width="wrap_content"
-                android:layout_height="0px"
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="韓國首爾" />
+                android:background="#ffffff"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/black_line"
-                android:layout_width="wrap_content"
-                android:layout_height="0px"
-                android:layout_weight="1"
-                android:src="@mipmap/black_horizontal" />
+                <ImageView
+                    android:id="@+id/black_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32px"
+                    android:layout_marginRight="32px"
+                    android:layout_marginTop="30px"
+                    android:src="@mipmap/black_horizontal" />
 
-            <TextView
-                android:id="@+id/item_glass_brand"
-                android:layout_width="wrap_content"
-                android:layout_height="0px"
-                android:layout_weight="1"
-                android:text="男女同款丨透明大框閱讀鏡" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/item_glass_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32px"
+                    android:layout_marginRight="32px"
+                    android:layout_marginTop="16px"
+                    android:text="男女同款丨透明大框閱讀鏡"
+                    android:textSize="30px" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
 
 
-    </RelativeLayout>
-</RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
