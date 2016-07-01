@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.controller.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -166,7 +167,8 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
                 break;
             // 购买
             case R.id.dress_result_buy:
-                Toast.makeText(this, "购买", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DressResultActivity.this, BuyDetailsActivity.class);
+                startActivity(intent);
                 break;
         }
 

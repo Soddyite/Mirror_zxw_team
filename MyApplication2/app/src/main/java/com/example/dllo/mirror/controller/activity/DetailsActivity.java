@@ -76,6 +76,9 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private GoodsDetails goodsDetails;
     private List<GoodsDetails.DataBean.ListBean> list;
     private int pos;
+    private String img;
+    private String name;
+    private String money;
 
     @Override
     protected int getLayout() {
@@ -215,6 +218,13 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
             case R.id.buy:
                 //购买
                 Intent intentBuy = new Intent(this, BuyDetailsActivity.class);
+
+                img = String.valueOf(list.get(pos).getData_info().getDesign_des().get(0).getImg());
+                name = list.get(pos).getData_info().getGoods_name();
+                money = list.get(pos).getData_info().getGoods_price();
+                intentBuy.putExtra("img", img);
+                intentBuy.putExtra("name", name);
+                intentBuy.putExtra("money", money);
                 startActivity(intentBuy);
                 break;
             // 分享

@@ -83,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/white_line_two"
             android:layout_below="@id/white_line_two"
-            android:layout_marginBottom="15px"
             android:layout_marginTop="15px"
+            android:paddingBottom="30px"
             android:paddingLeft="50px"
             android:paddingRight="50px"
             android:text="家而苹果机阿尔派二炮姐" />
