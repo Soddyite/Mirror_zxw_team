@@ -26,7 +26,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private String address;
     private AddressDao addressDao;
 
-    private List<Address> addressList;
+
 
 
     @Override
@@ -64,7 +64,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
 //        }
 
-        addressList = addressDao.queryBuilder().list();
+
 
 
     }
@@ -76,14 +76,14 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.commit_address:
-                List<Address> addressList = new ArrayList<>();
+
                 name = inputName.getText().toString();
                 num = inputNum.getText().toString();
                 address = inputAddress.getText().toString();
 
                 if (name.equals("") || num.equals("") || address.equals("")) {
                     Toast.makeText(this, "请填写信息", Toast.LENGTH_SHORT).show();
-                } else if (!name.equals("") && !num.equals("") && !address.equals("")) {
+                } else  {
                     Log.d("AddAddressActivity", name);
                     Log.d("AddAddressActivity", num);
                     Log.d("AddAddressActivity", address);

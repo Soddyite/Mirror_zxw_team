@@ -52,6 +52,7 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
                 .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
                 .build();//构建完成
         ImageLoader.getInstance().displayImage("http://cdn.duitang.com/uploads/item/201511/21/20151121222701_Qym8J.jpeg", holder.imageView,options);
+
         if (holder!=null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
