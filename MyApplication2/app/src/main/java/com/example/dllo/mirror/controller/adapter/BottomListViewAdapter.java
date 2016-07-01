@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.bean.GoodsDetails;
-import com.example.dllo.mirror.model.bean.MyData;
 import com.example.dllo.mirror.model.utils.ScreenUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -26,7 +25,6 @@ public class BottomListViewAdapter extends BaseAdapter {
     private List<GoodsDetails.DataBean.ListBean.DataInfoBean.DesignDesBean> list;
     private Context context;
     private DisplayImageOptions options;
-
 
     public BottomListViewAdapter(Context context) {
         this.context = context;
@@ -68,9 +66,6 @@ public class BottomListViewAdapter extends BaseAdapter {
                 .build();//构建完成
         ImageLoader.getInstance().displayImage(list.get(position).getImg(),
                 viewHolder.imageView, options);
-
-
-//        viewHolder.imageView.setImageResource(myDatas.get(position).getImage());
 
         // 设置item显示一个屏幕的高度
         convertView.setMinimumHeight(ScreenUtils.getScreenHeight(context));

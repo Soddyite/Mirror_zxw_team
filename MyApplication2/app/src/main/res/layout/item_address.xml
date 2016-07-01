@@ -39,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/item_receiver_tv"
                 android:layout_toRightOf="@id/item_receiver_colon_tv"
-                android:text="宇智波佐助"
                 android:textColor="#000000" />
 
             <TextView
@@ -67,7 +66,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/item_address_tv"
                 android:layout_toRightOf="@id/item_address_colon_tv"
-                android:text="大连市数码广场"
                 android:textColor="#000000" />
 
             <ImageView
@@ -94,7 +92,6 @@
                 android:layout_alignLeft="@id/item_address_tv"
                 android:layout_below="@id/item_address_tv"
                 android:layout_marginTop="10dp"
-                android:text="1111111111111"
                 android:textColor="#000000" />
 
         </RelativeLayout>

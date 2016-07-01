@@ -26,11 +26,8 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.dllo.mirror.R;
-
 import com.example.dllo.mirror.controller.adapter.PageFragmentAdapter;
-
 import com.example.dllo.mirror.controller.activity.DetailsActivity;
 import com.example.dllo.mirror.controller.activity.TopicDetailsActivity;
 import com.example.dllo.mirror.model.base.MyApplication;
@@ -40,11 +37,7 @@ import com.example.dllo.mirror.model.db.UsersDao;
 import com.example.dllo.mirror.model.myinterface.PageItemClickListener;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
 import com.google.gson.Gson;
-
-
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -53,7 +46,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 /**
  * Created by dllo on 16/6/16.
@@ -73,6 +65,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     private GoodsDetails goodsDetails;
     private List<GoodsDetails.DataBean.ListBean> list;
     private Bundle bundle1;
+
     private ProgressBar progressBar;
     Timer timer = new Timer();
     Handler handler = new Handler() {
@@ -105,6 +98,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
         timer.schedule(task, 800);
     }
+
 
     @SuppressLint("ValidFragment")
     @Override
@@ -389,10 +383,12 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         } else {
             Intent intent = new Intent();
             if (title.equals("專題分享")) {
+
                 intent.setClass(getmContext(), TopicDetailsActivity.class);
                 intent.putExtras(bundle1);
                 intent.putExtra("pos", id);
                 startActivity(intent);
+
             } else {
                 intent.setClass(MyApplication.getContext(), DetailsActivity.class);
                 // 传递序列化的集合

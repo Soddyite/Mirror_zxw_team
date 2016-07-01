@@ -5,11 +5,17 @@
 
     <ImageView
         android:id="@+id/item_image"
+<<<<<<< HEAD
         android:layout_width="540px"
         android:layout_height="838px"
         android:layout_marginLeft="22px"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher" />
+=======
+        android:layout_width="450px"
+        android:layout_height="800px"
+        android:layout_marginLeft="15px" />
+>>>>>>> 7e657aac5f37423c4eb9a71530b0d407e083b628
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/item_show_layout"

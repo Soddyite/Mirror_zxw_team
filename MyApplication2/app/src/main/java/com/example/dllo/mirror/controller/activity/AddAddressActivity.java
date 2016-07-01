@@ -1,16 +1,12 @@
 package com.example.dllo.mirror.controller.activity;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,14 +14,15 @@ import java.util.List;
  * 添加地址界面
  */
 public class AddAddressActivity extends BaseActivity implements View.OnClickListener {
+    // 输入的信息
     private EditText inputName;
     private EditText inputNum;
     private EditText inputAddress;
+    // 加入数据库的
     private String name;
     private String num;
     private String address;
     private AddressDao addressDao;
-
 
 
 
@@ -52,6 +49,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
 
+<<<<<<< HEAD
 
 //        // 遍历数据库, 是否添加过
 //        List<Address> addressList = addressDao.queryBuilder().list();
@@ -65,7 +63,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 //        }
 
 
-
+=======
+        addressList = addressDao.queryBuilder().list();
+>>>>>>> 7e657aac5f37423c4eb9a71530b0d407e083b628
 
     }
 
@@ -76,7 +76,10 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.commit_address:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e657aac5f37423c4eb9a71530b0d407e083b628
                 name = inputName.getText().toString();
                 num = inputNum.getText().toString();
                 address = inputAddress.getText().toString();
@@ -84,9 +87,12 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 if (name.equals("") || num.equals("") || address.equals("")) {
                     Toast.makeText(this, "请填写信息", Toast.LENGTH_SHORT).show();
                 } else  {
+<<<<<<< HEAD
                     Log.d("AddAddressActivity", name);
                     Log.d("AddAddressActivity", num);
                     Log.d("AddAddressActivity", address);
+=======
+>>>>>>> 7e657aac5f37423c4eb9a71530b0d407e083b628
                     Address addresses = new Address();
                     addresses.setName(name);
                     addresses.setNum(num);
