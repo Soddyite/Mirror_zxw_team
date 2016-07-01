@@ -2,28 +2,25 @@ package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.MediaController;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.DressResultAdapter;
-import com.example.dllo.mirror.model.base.MyApplication;
+import com.example.dllo.mirror.model.bean.GoodsDetails;
 import com.example.dllo.mirror.view.CommonVideoView;
 import com.example.dllo.mirror.view.DressResultListView;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zouliangyu on 16/6/16.
@@ -34,15 +31,10 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
 
     private DressResultAdapter dressResultAdapter;
     // 图片
-    private int[] image = {R.mipmap.piao1, R.mipmap.piao2, R.mipmap.piao3,
-            R.mipmap.piao4, R.mipmap.piao5};
+    private int[] image = {R.mipmap.meiruo1, R.mipmap.meiruo1, R.mipmap.meiruo1,
+            R.mipmap.meiruo1, R.mipmap.meiruo1};
     // videoview 视频, 视频上面图片及图片上面的播放键
     private static CommonVideoView videoView;
-
-    public static CommonVideoView getVideoView() {
-        return videoView;
-    }
-
     private ImageView topIv;
     private ImageView playerIv;
 
@@ -57,14 +49,12 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
     private static View viewVideo;
 
     private static AutoLinearLayout autoLinearLayout;
+    private List<GoodsDetails.DataBean.ListBean> list = new ArrayList<>();
 
     @Override
     protected int getLayout() {
-
-
         return R.layout.activity_dress_result;
     }
-
 
     @Override
     protected void initView() {
@@ -72,11 +62,8 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
         bindView(R.id.dress_result_exit).setOnClickListener(this);
         bindView(R.id.dress_result_buy).setOnClickListener(this);
 
-
         titleRl = bindView(R.id.dress_result_title_rl);
         buyRl = bindView(R.id.buy_relativelayout);
-
-
     }
 
     @Override
@@ -90,7 +77,6 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
         viewVideo = LayoutInflater.from(DressResultActivity.this).inflate(
                 R.layout.header_dress_video, null);
 
-
         autoLinearLayout = (AutoLinearLayout) viewVideo.findViewById(R.id.auto_linear_layout);
 
         // 视频
@@ -100,13 +86,10 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
         playerIv = (ImageView) viewVideo.findViewById(R.id.video_player_iv);
         playerIv.setOnClickListener(this);
         topIv.setOnClickListener(this);
-//        videoView.start(videoUrl);
         listView.addHeaderView(viewVideo);
 
         // 给适配器设置图片
-
         dressResultAdapter.setImage(image);
-
         listView.setAdapter(dressResultAdapter);
 
         // 设置popup
@@ -137,25 +120,8 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
             case R.id.video_player_iv:
                 playerIv.setVisibility(View.GONE);
                 topIv.setVisibility(View.GONE);
-
-//                // 播放视频
-////                Uri uri = Uri.parse(videoUrl);
-////                videoView.setMediaController(mediaController);
-////                videoView.setVideoURI(uri);
-////                videoView.requestFocus();
                 videoView.start(videoUrl);
                 break;
-//            case R.id.video_top_iv:
-//                playerIv.setVisibility(View.INVISIBLE);
-//                topIv.setVisibility(View.INVISIBLE);
-//                // 播放视频
-////                Uri uri2 = Uri.parse(videoUrl);
-////                videoView.setMediaController(mediaController);
-////                videoView.setVideoURI(uri2);
-////                videoView.requestFocus();
-//                videoView.start(videoUrl);
-//                break;
-            // popup点击
             case R.id.popup_dress:
                 if (popupWindow.isShowing()) {
                     popupWindow.dismiss();
@@ -188,7 +154,6 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
-
     public static AutoRelativeLayout setTitleRl() {
         return titleRl;
     }
@@ -199,15 +164,6 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
 
     public static CommonVideoView setVideoView() {
         return videoView;
-    }
-
-
-    public static View setViewVideo() {
-        return viewVideo;
-    }
-
-    public static DressResultListView setListView() {
-        return listView;
     }
 
 }

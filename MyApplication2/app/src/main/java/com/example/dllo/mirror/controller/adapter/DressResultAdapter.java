@@ -1,6 +1,7 @@
 package com.example.dllo.mirror.controller.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.model.bean.GoodsDetails;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -18,11 +22,12 @@ import java.util.List;
 public class DressResultAdapter extends BaseAdapter {
     private int[] image;
     private Context context;
+    private DisplayImageOptions options;
+    private ViewHolder viewHolder;
 
     public DressResultAdapter(Context context) {
         this.context = context;
     }
-
 
     public void setImage(int[] image) {
         this.image = image;
@@ -46,7 +51,7 @@ public class DressResultAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        viewHolder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(
                     R.layout.item_dress_result, parent, false);
@@ -56,10 +61,19 @@ public class DressResultAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+//        options = new DisplayImageOptions.Builder()
+//                .cacheInMemory(true)//设置下载的图片是否缓存在内存中
+//                .cacheOnDisk(true)//设置下载的图片是否缓存在SD卡中
+//                .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
+//                .build();//构建完成
+//        for (int i = 0; i < list.get(position).getData_info().getStory_data().getImg_array().size(); i++) {
+//            ImageLoader.getInstance().displayImage(list.get(position).getData_info().getStory_data().getImg_array().get(i)
+//                    , viewHolder.imageView, options);
+//        }
         viewHolder.imageView.setImageResource(image[position]);
+
         return convertView;
     }
-
 
     class ViewHolder {
         ImageView imageView;

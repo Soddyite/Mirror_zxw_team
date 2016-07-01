@@ -10,7 +10,5 @@
     <ImageView
         android:id="@+id/popup_dress_iv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@mipmap/piao5" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

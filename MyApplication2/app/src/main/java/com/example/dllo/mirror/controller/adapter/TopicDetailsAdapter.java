@@ -41,5 +41,4 @@ public class TopicDetailsAdapter extends PagerAdapter {
         container.removeView(view);
     }
 
-
 }

@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:scaleType="fitXY"-->
-    <!--android:src="@mipmap/piao1" />-->
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,7 +12,6 @@
             android:id="@+id/bottom_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/piao1"
             android:scaleType="fitXY" />
 
         <com.example.dllo.mirror.view.VerticalViewPager

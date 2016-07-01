@@ -31,7 +31,6 @@
             android:src="@mipmap/black_horizontal" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
-
     <com.example.dllo.mirror.view.DressResultListView
         android:id="@+id/listview"
         android:layout_width="match_parent"

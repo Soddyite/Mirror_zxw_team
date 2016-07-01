@@ -1,54 +1,42 @@
 package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
-
 import android.graphics.Bitmap;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-
-
 import com.ease.paysdk.FuQianLa;
 import com.ease.paysdk.FuQianLaPay;
 import com.ease.paysdk.bean.FuQianLaResult;
-
 import com.example.dllo.mirror.R;
-
 import com.example.dllo.mirror.model.utils.OrderUtils;
-
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import java.util.List;
-
 
 /**
  * Created by zouliangyu on 16/6/20.
+ * 购买详情界面
  */
 public class BuyDetailsActivity extends BaseActivity implements View.OnClickListener {
     PopupWindow popupWindow;
     private FuQianLaPay pay;
-    TextView addAdress;
+    TextView addAddress;
     RelativeLayout relativeLayout;
-
+    // 添加地址后显示的内容
     private TextView receiverTv; // 收件人
     private TextView colonOne;
     private TextView nameTv;
@@ -56,17 +44,19 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private TextView colonTwo;
     private TextView address; // 地址
     private TextView numTv; // 电话号
-
+    // 数据库以及缓存
     private AddressDao addressDao;
     private String name;
     private String address1;
     private String num;
     private List<Address> addressList;
-
+    // 添加地址下面的商品图片价格配送
     private ImageView imageView;
     private TextView titleTv;
     private TextView moneyTv;
+
     private DisplayImageOptions options;
+
     private String imgUrl;
     private String name1;
     private String money;
@@ -82,15 +72,15 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         bindView(R.id.buy_details_exit_iv).setOnClickListener(this);
 
         // 添加地址
-        addAdress = bindView(R.id.buy_details_add_address);
-        addAdress.setOnClickListener(this);
+        addAddress = bindView(R.id.buy_details_add_address);
+        addAddress.setOnClickListener(this);
 
         // 购买
         bindView(R.id.buy_btn).setOnClickListener(this);
 
         relativeLayout = bindView(R.id.buy_details_relativelayout);
         relativeLayout.setOnClickListener(this);
-
+        // 添加地址后显示的内容
         receiverTv = (TextView) findViewById(R.id.buy_details_receiver_tv);
         colonOne = (TextView) findViewById(R.id.buy_details_colon_tv);
         nameTv = (TextView) findViewById(R.id.buy_details_receiver_name_tv);
@@ -117,11 +107,9 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
                 .build();//构建完成
 
-
         ImageLoader.getInstance().displayImage(imgUrl, imageView, options);
         titleTv.setText(name1);
         moneyTv.setText(money);
-
 
         initPopup();
 

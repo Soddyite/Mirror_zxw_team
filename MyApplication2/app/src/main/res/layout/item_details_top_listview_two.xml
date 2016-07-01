@@ -45,7 +45,6 @@
             android:layout_below="@id/white_line_one"
             android:layout_marginTop="15px"
             android:paddingRight="50px"
-            android:text="韩国"
             android:textSize="60px" />
 
         <TextView
@@ -54,8 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/item_top_listview_country"
             android:layout_marginRight="15px"
-            android:layout_toLeftOf="@id/item_top_listview_country"
-            android:text="来自韩国" />
+            android:layout_toLeftOf="@id/item_top_listview_country" />
 
         <TextView
             android:id="@+id/item_top_listview_english"
@@ -63,8 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/item_top_listview_location"
             android:layout_marginRight="15px"
-            android:layout_toLeftOf="@id/item_top_listview_country"
-            android:text="English" />
+            android:layout_toLeftOf="@id/item_top_listview_country" />
 
         <ImageView
             android:id="@+id/white_line_two"
@@ -86,8 +83,7 @@
             android:layout_marginTop="15px"
             android:paddingBottom="30px"
             android:paddingLeft="50px"
-            android:paddingRight="50px"
-            android:text="家而苹果机阿尔派二炮姐" />
+            android:paddingRight="50px" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoLinearLayout>

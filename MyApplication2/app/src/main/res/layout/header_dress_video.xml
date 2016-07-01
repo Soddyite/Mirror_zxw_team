@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="400px"
         android:scaleType="fitXY"
-        android:src="@mipmap/piao1" />
+        android:src="@mipmap/meiruo2" />
 
     <ImageView
         android:id="@+id/video_player_iv"

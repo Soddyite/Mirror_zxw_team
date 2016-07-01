@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/6/24.
+ * 编辑界面
  */
 public class EditAddressActivity extends BaseActivity implements View.OnClickListener {
 
@@ -31,8 +32,6 @@ public class EditAddressActivity extends BaseActivity implements View.OnClickLis
 
     private int pos;
     private int position;
-    private String name;
-
 
     @Override
     protected int getLayout() {
@@ -55,15 +54,12 @@ public class EditAddressActivity extends BaseActivity implements View.OnClickLis
     protected void initData() {
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
         addressList = addressDao.queryBuilder().list();
-//        addressDao.queryBuilder().where(AddressDao.Properties.Name.eq(addressList.get(po)))
-
 
         Intent intent = getIntent();
         pos = intent.getIntExtra("position", 0);
         position = addressList.size() - pos - 1;
 
         Log.d("123", "position:" + position);
-
 
         editName.setText(addressList.get(position).getName());
         editAddress.setText(addressList.get(position).getAddress());
@@ -79,17 +75,11 @@ public class EditAddressActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.commit_change:
 
-                Log.d("=========", "position***:" + position);
                 String name = editName.getText().toString();
                 String num = editNum.getText().toString();
                 String address = editAddress.getText().toString();
-                Log.d("EditAddressActivity***", name);
-                Log.d("EditAddressActivity***", num);
-                Log.d("EditAddressActivity---", address);
 
                 addressDao.update(new Address(Long.valueOf(position + 1), name, num, address));
-
-                Log.d("EditAddressActivity00000000", "Long.valueOf(position):" + Long.valueOf(position));
 
                 finish();
                 Toast.makeText(this, "修改成功", Toast.LENGTH_SHORT).show();

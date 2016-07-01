@@ -6,15 +6,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.MyAddressAdapter;
 import com.example.dllo.mirror.model.base.MyApplication;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +25,6 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
 
     private AddressDao addressDao;
     private List<Address> addressList;
-    private int pos;
 
     @Override
     protected int getLayout() {
@@ -50,7 +46,6 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pos = position;
 
                 SharedPreferences sharedPreferences = getSharedPreferences("address", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -61,13 +56,9 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
 
                 finish();
                 Toast.makeText(MyAddressActivity.this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
-//                addressList.get(position).getId();
-//                Intent intent = new Intent(MyAddressActivity.this, BuyDetailsActivity.class);
-//                startActivity(intent);
 
             }
         });
-
 
     }
 
@@ -82,8 +73,7 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
                 Intent intent = new Intent(this, AddAddressActivity.class);
                 startActivity(intent);
                 break;
-            // 邹良禹
-            // 大连
+
         }
     }
 
@@ -91,15 +81,11 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
     protected void onStart() {
         super.onStart();
 
-
         myAddressAdapter = new MyAddressAdapter(MyApplication.getContext());
-        myAddressAdapter.setActivity(this);
-
 
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
 
         addressList = addressDao.queryBuilder().list();
-
 
         if (addressList.size() > 0) {
             myAddressAdapter.setAddressList(addressList);
