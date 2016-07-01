@@ -32,7 +32,6 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
     private String goods_name;
 
 
-
     public void setList(List<GoodsDetails.DataBean.ListBean> list) {
         this.list = list;
         notifyDataSetChanged();
@@ -92,20 +91,14 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
         }
         if (holder != null) {
 
-            ImageLoader.getInstance().displayImage("http://cdn.duitang.com/uploads/item/201511/21/20151121222701_Qym8J.jpeg", holder.imageView, options);
-
-            if (holder != null) {
-
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        pageItemClickListener.onClick(position);
-                    }
-                });
-            }
-
-
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pageItemClickListener.onClick(position);
+                }
+            });
         }
+
     }
 
     @Override
