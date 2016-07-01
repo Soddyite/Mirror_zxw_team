@@ -58,7 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/pagefragment_titlelayout"
         android:layout_marginTop="30px"
-
         android:scrollbars="none">
 
         <android.support.v7.widget.RecyclerView
@@ -68,12 +67,32 @@
             android:layout_marginTop="94px" />
     </HorizontalScrollView>
 
-
-    <ImageView
-        android:id="@+id/pagefragment_shopcar"
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/shopcar_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@mipmap/shoppingcar"
-        android:visibility="gone" />
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/pagefragment_shopcar"
+            android:layout_width="250px"
+            android:layout_height="250px"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/shoppingcar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pagefragment_shopcar"
+            android:layout_marginTop="30px"
+            android:text="您的購物車還沒有商品"
+            android:textColor="#ffffff" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/pagefragment_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -11,6 +11,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +23,7 @@ import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +51,8 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -56,10 +61,10 @@ import java.util.List;
 
 public class PageFragment extends BaseFragment implements View.OnClickListener, PageItemClickListener {
     private String title;
-    private View titleLayout;
+    private View titleLayout,shopcarLayout;
     private RecyclerView recyclerView;
     private TextView oneTV, twoTV, threeTV, fourTV, fiveTV, toOneTV, titleTv, exitTv;
-    private ImageView shopCar;
+
     private PageFragmentAdapter pageFragmentAdapter;
     private HongXiangListener hongXiangListener;
     private PopupWindow pop;
@@ -68,9 +73,38 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     private GoodsDetails goodsDetails;
     private List<GoodsDetails.DataBean.ListBean> list;
     private Bundle bundle1;
-    private Bundle bundle2;
-    private Bundle bundle3;
+    private ProgressBar progressBar;
+    Timer timer = new Timer();
+    Handler handler = new Handler() {
 
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    recyclerView.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+
+    };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
+
+            }
+        };
+
+        timer.schedule(task, 2000);
+    }
 
     @SuppressLint("ValidFragment")
     @Override
@@ -99,13 +133,18 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         titleLayout = view.findViewById(R.id.pagefragment_titlelayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.pagefragment_recycleView);
         titleTv = (TextView) view.findViewById(R.id.pagefragment_title);
-        shopCar = (ImageView) view.findViewById(R.id.pagefragment_shopcar);
+        shopcarLayout = view.findViewById(R.id.shopcar_layout);
+        progressBar = (ProgressBar) view.findViewById(R.id.pagefragment_);
         //购物车页不显示RecyclerView,显示购物车图标
         if (title.equals("我的購物車")) {
             recyclerView.setVisibility(View.INVISIBLE);
-            shopCar.setVisibility(View.VISIBLE);
+            shopcarLayout.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
         }
         titleTv.setText(title);
+        recyclerView.setVisibility(View.INVISIBLE);
+
+
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -149,9 +188,9 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
             // 实现序列化
             bundle1 = new Bundle();
             bundle1.putSerializable("bundle1", (Serializable) list);
-
             pageFragmentAdapter.setList(list);
             recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 10));
+
 
         } else if (title.equals("瀏覽平光鏡") || title.equals("瀏覽太陽鏡")) {
 
@@ -166,6 +205,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
             pageFragmentAdapter.setList(list);
             recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 10));
+
 
         } else if (title.equals("專題分享")) {
             for (GoodsDetails.DataBean.ListBean listBean : goodsDetails.getData().getList()) {
@@ -182,6 +222,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
             pageFragmentAdapter.setList(list);
             recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 10));
+
         }
         recyclerView.setAdapter(pageFragmentAdapter);
 
@@ -195,7 +236,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
             case R.id.pagefragment_titlelayout:
                 recyclerView.setVisibility(View.INVISIBLE);
                 titleLayout.setVisibility(View.INVISIBLE);
-                shopCar.setVisibility(View.INVISIBLE);
+                shopcarLayout.setVisibility(View.INVISIBLE);
                 pop.showAsDropDown(titleLayout);
                 switch (title) {
                     case "瀏覽所有類型":
@@ -313,7 +354,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
                     recyclerView.setVisibility(View.VISIBLE);
                 }
                 if (title.equals("我的購物車")) {
-                    shopCar.setVisibility(View.VISIBLE);
+                    shopcarLayout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -381,6 +422,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         }
         return false;
     }
+
 
 }
 
