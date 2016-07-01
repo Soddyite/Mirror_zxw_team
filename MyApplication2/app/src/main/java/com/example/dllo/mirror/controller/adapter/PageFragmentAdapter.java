@@ -74,6 +74,7 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
                 .resetViewBeforeLoading(false)//设置图片在下载前是否重置，复位
                 .displayer(new FadeInBitmapDisplayer(100))//是否图片加载好后渐入的动画时间
                 .build();//构建完成
+
         ImageLoader imageLoader = ImageLoader.getInstance();
         int type = Integer.parseInt(list.get(position).getType());
         goods_img = list.get(position).getData_info().getGoods_img();
@@ -96,15 +97,21 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
             imageLoader.displayImage(goods_img, holder.imageView, options);
         }
         if (holder != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pageItemClickListener.onClick(position);
-                }
-            });
+
+            ImageLoader.getInstance().displayImage("http://cdn.duitang.com/uploads/item/201511/21/20151121222701_Qym8J.jpeg", holder.imageView, options);
+
+            if (holder != null) {
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pageItemClickListener.onClick(position);
+                    }
+                });
+            }
+
+
         }
-
-
     }
 
     @Override

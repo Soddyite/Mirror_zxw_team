@@ -45,6 +45,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     TextView addAdress;
     RelativeLayout relativeLayout;
 
+
+
     private TextView receiverTv; // 收件人
     private TextView colonOne;
     private TextView nameTv;
