@@ -11,7 +11,7 @@
         android:scaleType="fitXY"/>
 
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout-
         android:id="@+id/item_show_layout"
         android:layout_width="540px"
         android:layout_height="wrap_content"
@@ -101,5 +101,5 @@
         </com.zhy.autolayout.AutoLinearLayout>
 
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout->
 </com.zhy.autolayout.AutoRelativeLayout>
