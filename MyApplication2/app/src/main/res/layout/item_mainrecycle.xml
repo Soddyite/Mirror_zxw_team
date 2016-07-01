@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-<<<<<<< HEAD
-    android:layout_height="match_parent">
-=======
     android:layout_height="838px">
->>>>>>> d9a3b8291e4ff287ffc7791f9da0a1ccb9b18e63
 
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="540px"
         android:layout_height="838px"
         android:layout_marginLeft="22px"
-        android:scaleType="fitXY"/>
-
+        android:scaleType="fitXY" />
 
     <com.zhy.autolayout.AutoRelativeLayout-
         android:id="@+id/item_show_layout"
