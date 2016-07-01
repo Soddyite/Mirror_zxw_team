@@ -36,7 +36,13 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private FuQianLaPay pay;
     TextView addAddress;
     RelativeLayout relativeLayout;
+
+
+
+
+
     // 添加地址后显示的内容
+
     private TextView receiverTv; // 收件人
     private TextView colonOne;
     private TextView nameTv;

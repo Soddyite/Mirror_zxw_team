@@ -1,14 +1,13 @@
 package com.example.dllo.mirror.controller.adapter;
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
@@ -18,11 +17,9 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
+import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
-
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/6/16.
@@ -51,13 +48,14 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_mainrecycle, parent, false);
+        AutoUtils.autoSize(view);
         MyViewHolder myviewHolder = new MyViewHolder(view);
 
         return myviewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         DisplayImageOptions options;
         options = new DisplayImageOptions.Builder()
                 .cacheOnDisk(true) //设置下载的图片是否缓存在SD卡中
@@ -68,8 +66,8 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
                 .delayBeforeLoading(0) //int delayInMillis为你设置的下载前的延迟时间
                 .resetViewBeforeLoading(false)//设置图片在下载前是否重置，复位
                 .displayer(new FadeInBitmapDisplayer(100))//是否图片加载好后渐入的动画时间
-
                 .build();//构建完成
+
         ImageLoader imageLoader = ImageLoader.getInstance();
         int type = Integer.parseInt(list.get(position).getType());
         goods_img = list.get(position).getData_info().getGoods_img();
@@ -83,21 +81,16 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
         holder.goods_price.setText(goods_price);
         holder.product_area.setText(product_area);
         if (type == 2) {
-            holder.goods_name.setVisibility(View.GONE);
-            holder.goods_price.setVisibility(View.GONE);
-            holder.product_area.setVisibility(View.GONE);
+            holder.view.setVisibility(View.INVISIBLE);
             holder.brand.setText(story_title);
             ImageLoader.getInstance().displayImage(story_url, holder.imageView, options);
-            //Picasso.with(context).load(story_url).fit().into(holder.imageView);
+
         } else {
             holder.brand.setText(brand);
             imageLoader.displayImage(goods_img, holder.imageView, options);
-
-            // Picasso.with(context).load(goods_img).fit().into(holder.imageView);
-
-
         }
         if (holder != null) {
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,7 +98,6 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
                 }
             });
         }
-
 
     }
 
@@ -117,6 +109,7 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
     class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         private TextView goods_price, goods_name, product_area, brand;
+        View view;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -125,7 +118,9 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
             product_area = (TextView) itemView.findViewById(R.id.item_glass_product_area);
             brand = (TextView) itemView.findViewById(R.id.item_glass_brand);
             goods_name = (TextView) itemView.findViewById(R.id.item_goods_name);
+            view = itemView.findViewById(R.id.item_type2);
 
         }
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.controller.activity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     private List<Address> addressList;
 
+
+
     @Override
     protected int getLayout() {
         return R.layout.activity_add_address;
@@ -49,7 +52,23 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
 
+
+
+//        // 遍历数据库, 是否添加过
+//        List<Address> addressList = addressDao.queryBuilder().list();
+//        if (addressList.size() > 0){
+//            for (Address address : addressList) {
+//                if (address.getNum().toString().equals(num.toString())){
+//
+//                }
+//            }
+
+//        }
+
+
+
         addressList = addressDao.queryBuilder().list();
+
 
     }
 
@@ -60,6 +79,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.commit_address:
+
+
+
                 name = inputName.getText().toString();
                 num = inputNum.getText().toString();
                 address = inputAddress.getText().toString();
@@ -67,6 +89,11 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 if (name.equals("") || num.equals("") || address.equals("")) {
                     Toast.makeText(this, "请填写信息", Toast.LENGTH_SHORT).show();
                 } else  {
+
+                    Log.d("AddAddressActivity", name);
+                    Log.d("AddAddressActivity", num);
+                    Log.d("AddAddressActivity", address);
+
                     Address addresses = new Address();
                     addresses.setName(name);
                     addresses.setNum(num);
