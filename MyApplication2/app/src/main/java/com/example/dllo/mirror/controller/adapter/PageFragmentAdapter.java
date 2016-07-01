@@ -1,15 +1,13 @@
 package com.example.dllo.mirror.controller.adapter;
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
@@ -19,14 +17,9 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-import com.zhy.autolayout.AutoLinearLayout;
-import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
-
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/6/16.
@@ -37,6 +30,7 @@ public class PageFragmentAdapter extends RecyclerView.Adapter<PageFragmentAdapte
     private List<GoodsDetails.DataBean.ListBean> list;
     private String goods_img, brand, goods_price, product_area, story_url, story_title;
     private String goods_name;
+
 
 
     public void setList(List<GoodsDetails.DataBean.ListBean> list) {
