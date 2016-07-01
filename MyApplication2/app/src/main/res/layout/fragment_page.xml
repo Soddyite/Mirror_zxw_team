@@ -20,15 +20,15 @@
             android:layout_marginTop="28px"
             android:text="瀏覽所有分類"
             android:textColor="#FFFFFF"
-            android:textSize="40px" />
+            android:textSize="30px" />
 
 
         <ImageView
             android:id="@+id/pagefragment_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30px"
+            android:layout_height="30px"
             android:layout_alignTop="@+id/pagefragment_title"
-            android:layout_margin="10px"
+            android:layout_marginLeft="30px"
             android:layout_toRightOf="@+id/pagefragment_title"
             android:src="@mipmap/down_arrow" />
 
@@ -39,7 +39,7 @@
             android:layout_alignLeft="@+id/pagefragment_title"
             android:layout_alignRight="@+id/pagefragment_arrow"
             android:layout_below="@+id/pagefragment_title"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="14px"
             android:src="@mipmap/h_line" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_marginTop="26px"
             android:text="顯示順序為 最新推薦"
             android:textColor="#FFFFFF"
-            android:textSize="30px" />
+            android:textSize="24px" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <HorizontalScrollView
@@ -67,28 +67,29 @@
             android:layout_marginTop="94px" />
     </HorizontalScrollView>
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:id="@+id/shopcar_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:orientation="vertical"
         android:visibility="gone">
 
         <ImageView
             android:id="@+id/pagefragment_shopcar"
-            android:layout_width="250px"
-            android:layout_height="250px"
-            android:layout_centerInParent="true"
+            android:layout_width="180px"
+            android:layout_height="180px"
+            android:layout_gravity="center_horizontal"
             android:src="@mipmap/shoppingcar" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/pagefragment_shopcar"
             android:layout_marginTop="30px"
             android:text="您的購物車還沒有商品"
-            android:textColor="#ffffff" />
-    </com.zhy.autolayout.AutoRelativeLayout>
+            android:textColor="#ffffff"
+            android:textSize="20px" />
+    </com.zhy.autolayout.AutoLinearLayout>
 
     <ProgressBar
         android:id="@+id/pagefragment_"
