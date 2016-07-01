@@ -36,13 +36,13 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private FuQianLaPay pay;
     TextView addAddress;
     RelativeLayout relativeLayout;
-<<<<<<< HEAD
 
 
 
-=======
+
+
     // 添加地址后显示的内容
->>>>>>> 7e657aac5f37423c4eb9a71530b0d407e083b628
+
     private TextView receiverTv; // 收件人
     private TextView colonOne;
     private TextView nameTv;
