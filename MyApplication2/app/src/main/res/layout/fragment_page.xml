@@ -20,7 +20,6 @@
             android:textColor="#FFFFFF"
             android:textSize="40px" />
 
-
         <ImageView
             android:id="@+id/pagefragment_arrow"
             android:layout_width="wrap_content"

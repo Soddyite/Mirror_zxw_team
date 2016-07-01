@@ -1,26 +1,17 @@
 package com.example.dllo.mirror.controller.activity;
 
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.bean.UserBean;
 import com.example.dllo.mirror.model.utils.OkHttpClientManager;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 
 /**
  * Created by dllo on 16/6/13.
