@@ -103,7 +103,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
             }
         };
 
-        timer.schedule(task, 2000);
+        timer.schedule(task, 800);
     }
 
     @SuppressLint("ValidFragment")
@@ -330,8 +330,8 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
      */
     private void TextViewChange(TextView textview) {
         scaleAnimation = new ScaleAnimation(1, 1.1f, 1, 1.1f);
-        scaleAnimation.setDuration(1000);
-        textview.setTextColor(0x99ffffff);
+        scaleAnimation.setDuration(500);
+        textview.setTextColor(0x99FFFFFF);
         textview.setAnimation(scaleAnimation);
     }
 

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
 
-    <LinearLayout
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="800px"
-        android:orientation="vertical"
-        >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/pop_one"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-            android:layout_marginTop="58px"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
             android:text="全部分類"
             android:textColor="#30ffffff"
             android:textSize="30px" />
@@ -25,9 +23,9 @@
         <TextView
             android:id="@+id/pop_two"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="78px"
             android:text="瀏覽平光鏡"
             android:textColor="#30ffffff"
             android:textSize="30px" />
@@ -35,9 +33,9 @@
         <TextView
             android:id="@+id/pop_three"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="78px"
             android:text="瀏覽太陽鏡"
             android:textColor="#30FFFFFF"
             android:textSize="30px" />
@@ -45,10 +43,8 @@
         <TextView
             android:id="@+id/pop_four"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78px"
             android:text="專題分享"
             android:textColor="#30FFFFFF"
             android:textSize="30px" />
@@ -56,10 +52,8 @@
         <TextView
             android:id="@+id/pop_five"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78px"
             android:text="我的購物車"
             android:textColor="#30FFFFFF"
             android:textSize="30px" />
@@ -67,10 +61,8 @@
         <TextView
             android:id="@+id/pop_toone"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78px"
             android:text="返回首頁"
             android:textColor="#30FFFFFF"
             android:textSize="30px" />
@@ -78,12 +70,13 @@
         <TextView
             android:id="@+id/main_exit"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="100px"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78px"
             android:text="退出"
             android:textColor="#30FFFFFF"
             android:textSize="30px" />
 
-    </LinearLayout>
-</LinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>
