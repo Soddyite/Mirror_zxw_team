@@ -11,10 +11,7 @@
         android:layout_marginLeft="22px"
         android:scaleType="fitXY" />
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 2494078acbeb32d2ea446fa5cff4ff6dc9dfe587
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/item_show_layout"
         android:layout_width="540px"
