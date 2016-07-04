@@ -15,6 +15,7 @@ import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
+
 import com.ease.paysdk.FuQianLa;
 import com.ease.paysdk.FuQianLaPay;
 import com.ease.paysdk.bean.FuQianLaResult;
@@ -26,6 +27,7 @@ import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import java.util.List;
 
 /**
@@ -38,12 +40,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     TextView addAddress;
     RelativeLayout relativeLayout;
 
-
-
-
-
     // 添加地址后显示的内容
-
     private TextView receiverTv; // 收件人
     private TextView colonOne;
     private TextView nameTv;

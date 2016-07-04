@@ -1,22 +1,16 @@
 package com.example.dllo.mirror.model.base;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zouliangyu on 16/6/13.
@@ -33,6 +27,7 @@ public class MyApplication extends Application {
     }
 
     private void aaa(Context context) {
+
         File cacheDir = StorageUtils.getOwnCacheDirectory(context, "universalimageloader/Cache");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .memoryCacheExtraOptions(480, 800) // max width, max height，即保存的每个缓存文件的最大长宽
@@ -55,8 +50,6 @@ public class MyApplication extends Application {
 
 
     public static Context getContext() {
-
-
         return context;
     }
 }

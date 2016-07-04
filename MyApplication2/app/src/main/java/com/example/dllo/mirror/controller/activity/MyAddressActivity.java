@@ -53,7 +53,6 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
                 editor.putString("address", addressList.get(addressList.size() - position - 1).getAddress());
                 editor.putString("num", addressList.get(addressList.size() - position - 1).getNum());
                 editor.commit();
-
                 finish();
                 Toast.makeText(MyAddressActivity.this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
 

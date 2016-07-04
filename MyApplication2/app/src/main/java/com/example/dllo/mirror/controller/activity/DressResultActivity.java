@@ -2,7 +2,6 @@ package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,9 +75,7 @@ public class DressResultActivity extends BaseActivity implements View.OnClickLis
         // 视频头布局
         viewVideo = LayoutInflater.from(DressResultActivity.this).inflate(
                 R.layout.header_dress_video, null);
-
         autoLinearLayout = (AutoLinearLayout) viewVideo.findViewById(R.id.auto_linear_layout);
-
         // 视频
         videoView = (CommonVideoView) viewVideo.findViewById(R.id.videoview);
 

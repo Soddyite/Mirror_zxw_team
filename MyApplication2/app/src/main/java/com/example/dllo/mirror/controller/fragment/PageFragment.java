@@ -104,7 +104,6 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //子类引用父类对象
         hongXiangListener = (HongXiangListener) activity;
     }
 
@@ -137,7 +136,6 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
         }
         titleTv.setText(title);
         recyclerView.setVisibility(View.INVISIBLE);
-
 
     }
 
@@ -199,7 +197,6 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
 
             pageFragmentAdapter.setList(list);
             recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 10));
-
 
         } else if (title.equals("專題分享")) {
             for (GoodsDetails.DataBean.ListBean listBean : goodsDetails.getData().getList()) {
@@ -324,7 +321,7 @@ public class PageFragment extends BaseFragment implements View.OnClickListener, 
      */
     private void TextViewChange(TextView textview) {
         scaleAnimation = new ScaleAnimation(1, 1.1f, 1, 1.1f);
-        scaleAnimation.setDuration(500);
+        scaleAnimation.setDuration(1000);
         textview.setTextColor(0x99FFFFFF);
         textview.setAnimation(scaleAnimation);
     }

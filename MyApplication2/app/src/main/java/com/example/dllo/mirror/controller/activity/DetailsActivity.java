@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.BottomListViewAdapter;
 import com.example.dllo.mirror.controller.adapter.TopListViewAdapter;
@@ -24,11 +23,8 @@ import com.example.dllo.mirror.view.NoScrollListView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zhy.autolayout.AutoFrameLayout;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
@@ -62,7 +58,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private String img;
     private String name;
     private String money;
-    private Bundle bundle;
 
     @Override
     protected int getLayout() {
@@ -111,6 +106,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         bottomListViewAdapter = new BottomListViewAdapter(this);
 
         bottomListViewAdapter.setList(list.get(pos).getData_info().getDesign_des());
+
         listViewBottom.setAdapter(bottomListViewAdapter);
         // 滚动条  不活动的时候隐藏，活动的时候也隐藏
         listViewBottom.setVerticalScrollBarEnabled(true);
@@ -290,5 +286,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         int top = view.getTop();
         return -top + firstVisibleItem * view.getHeight();
     }
+
 
 }
