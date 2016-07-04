@@ -7,12 +7,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
-
 import java.util.List;
 
 /**

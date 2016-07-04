@@ -78,8 +78,6 @@ public class TopListViewAdapter extends BaseAdapter {
             myViewHolder.contentTv.setText(list.get(position).getIntroContent());
         }
 
-//        }
-
         // 设置item显示一个屏幕的高度
         convertView.setMinimumHeight(ScreenUtils.getScreenHeight(context));
 

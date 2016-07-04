@@ -1,4 +1,4 @@
-package com.example.dllo.mirror.controller.activity;
+package com.example.dllo.mirror.model.utils;
 
 /**
  * Created by siqi on 16/3/31.

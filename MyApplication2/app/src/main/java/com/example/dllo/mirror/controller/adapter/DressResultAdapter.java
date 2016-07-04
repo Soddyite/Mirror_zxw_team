@@ -22,7 +22,6 @@ import java.util.List;
 public class DressResultAdapter extends BaseAdapter {
     private int[] image;
     private Context context;
-    private DisplayImageOptions options;
     private ViewHolder viewHolder;
 
     public DressResultAdapter(Context context) {
@@ -61,15 +60,6 @@ public class DressResultAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-//        options = new DisplayImageOptions.Builder()
-//                .cacheInMemory(true)//设置下载的图片是否缓存在内存中
-//                .cacheOnDisk(true)//设置下载的图片是否缓存在SD卡中
-//                .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//
-//                .build();//构建完成
-//        for (int i = 0; i < list.get(position).getData_info().getStory_data().getImg_array().size(); i++) {
-//            ImageLoader.getInstance().displayImage(list.get(position).getData_info().getStory_data().getImg_array().get(i)
-//                    , viewHolder.imageView, options);
-//        }
         viewHolder.imageView.setImageResource(image[position]);
 
         return convertView;

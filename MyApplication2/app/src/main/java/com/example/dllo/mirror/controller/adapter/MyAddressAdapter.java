@@ -73,6 +73,7 @@ public class MyAddressAdapter extends BaseAdapter {
         viewHolder.editIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context, EditAddressActivity.class);
                 intent.putExtra("position", position);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

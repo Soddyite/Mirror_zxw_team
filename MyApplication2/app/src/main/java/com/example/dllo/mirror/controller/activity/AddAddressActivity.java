@@ -4,10 +4,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.model.db.Address;
 import com.example.dllo.mirror.model.db.AddressDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
+
 import java.util.List;
 
 /**
@@ -27,8 +29,6 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     private List<Address> addressList;
 
-
-
     @Override
     protected int getLayout() {
         return R.layout.activity_add_address;
@@ -38,7 +38,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     protected void initView() {
         // 退出
         bindView(R.id.add_address_exit_iv).setOnClickListener(this);
-        // 输出名字  手机号  地址
+        // 名字  手机号  地址
         inputName = (EditText) findViewById(R.id.input_name_et);
         inputNum = (EditText) findViewById(R.id.input_num_et);
         inputAddress = (EditText) findViewById(R.id.input_receive_address_et);
@@ -51,24 +51,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     protected void initData() {
 
         addressDao = GreenDaoSingleton.getOurInstance().getAddressDao();
-
-
-
-//        // 遍历数据库, 是否添加过
-//        List<Address> addressList = addressDao.queryBuilder().list();
-//        if (addressList.size() > 0){
-//            for (Address address : addressList) {
-//                if (address.getNum().toString().equals(num.toString())){
-//
-//                }
-//            }
-
-//        }
-
-
-
         addressList = addressDao.queryBuilder().list();
-
 
     }
 
@@ -80,20 +63,13 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.commit_address:
 
-
-
                 name = inputName.getText().toString();
                 num = inputNum.getText().toString();
                 address = inputAddress.getText().toString();
 
                 if (name.equals("") || num.equals("") || address.equals("")) {
                     Toast.makeText(this, "请填写信息", Toast.LENGTH_SHORT).show();
-                } else  {
-
-                    Log.d("AddAddressActivity", name);
-                    Log.d("AddAddressActivity", num);
-                    Log.d("AddAddressActivity", address);
-
+                } else {
                     Address addresses = new Address();
                     addresses.setName(name);
                     addresses.setNum(num);
@@ -102,7 +78,6 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                     finish();
                     Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
         }
     }

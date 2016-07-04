@@ -22,14 +22,19 @@ public abstract class BaseFragment extends Fragment {
         return mContext;
     }
 
-    // 加载布局
+    /**
+     * 加载布局
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(getLayout(), container, false);
     }
-
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -37,8 +42,6 @@ public abstract class BaseFragment extends Fragment {
         mContext = MyApplication.getContext();
     }
 
-
-    // 加载组件
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -52,10 +55,23 @@ public abstract class BaseFragment extends Fragment {
         initData();
     }
 
+    /**
+     * 加载布局
+     *
+     * @return 布局id
+     */
     protected abstract int getLayout();
 
-    protected abstract void initView( View view);
+    /**
+     * 加载组件
+     *
+     * @param view
+     */
+    protected abstract void initView(View view);
 
+    /**
+     * 加载数据
+     */
     protected abstract void initData();
 
     // 组件实例化不需要转型
