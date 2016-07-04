@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="838px">
 
@@ -8,9 +9,12 @@
         android:layout_width="540px"
         android:layout_height="838px"
         android:layout_marginLeft="22px"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2494078acbeb32d2ea446fa5cff4ff6dc9dfe587
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/item_show_layout"
         android:layout_width="540px"

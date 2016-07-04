@@ -59,6 +59,7 @@ public class BottomListViewAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)//设置下载的图片是否缓存在内存中
                 .cacheOnDisk(true)//设置下载的图片是否缓存在SD卡中

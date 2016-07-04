@@ -1,14 +1,13 @@
 package com.example.dllo.mirror.controller.activity;
 
 import android.content.Intent;
-
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.controller.adapter.MainAdapter;
 import com.example.dllo.mirror.controller.fragment.PageFragment;
@@ -16,7 +15,6 @@ import com.example.dllo.mirror.model.db.Users;
 import com.example.dllo.mirror.model.db.UsersDao;
 import com.example.dllo.mirror.model.utils.GreenDaoSingleton;
 import com.example.dllo.mirror.model.utils.VerticalViewPager;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
     UsersDao usersDao;
     private List<Users> userBeanList;
     ImageView main_mirror;
-    private final static String fileName = "meiruo.json";
+    private ScaleAnimation scaleAnimation;
 
     @Override
     protected int getLayout() {
@@ -38,13 +36,15 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
 
     @Override
     protected void initView() {
+
+        scaleAnimation = new ScaleAnimation(0.8f, 1.2f, 0.8f, 1.2f);
+
         main_mirror = (ImageView) findViewById(R.id.main_mirror);
 
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_viewpager);
         log = (TextView) findViewById(R.id.main_log);
         mainAdapter = new MainAdapter(getSupportFragmentManager());
         initTextView();
-
 
     }
 
@@ -54,7 +54,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
         initTextView();
 
     }
-
 
     public void initTextView() {
 
@@ -70,7 +69,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
 
             log.setText("登陆");
 
-
         }
 
         //登录
@@ -82,7 +80,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
 
                 Log.d("MainActivity", "userBeanList.size():" + userBeanList.size());
 
-
                 userBeanList = usersDao.queryBuilder().list();
 
                 if (userBeanList.size() > 0) {
@@ -90,7 +87,6 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
                     log.setText("购物车");
 
                     verticalViewPager.setCurrentItem(4);
-
 
                 } else {
 
@@ -101,10 +97,8 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
 
                 }
 
-
             }
         });
-
 
     }
 
@@ -115,10 +109,13 @@ public class MainActivity extends BaseActivity implements PageFragment.HongXiang
             @Override
             public void onClick(View v) {
 
+                scaleAnimation.setDuration(200);
+                scaleAnimation.setRepeatMode(Animation.REVERSE);
+                main_mirror.startAnimation(scaleAnimation);
+
                 Log.d("MainActivity", "userBeanList.size():" + userBeanList.size());
             }
         });
-
 
         fragmentList = new ArrayList<>();
         //像Viewpager加入Fragment,通过构造方法传入标题
